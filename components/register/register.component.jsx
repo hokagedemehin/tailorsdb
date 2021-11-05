@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../services/firebase/firebase";
 import { useRouter } from "next/router";
+import { auth } from "../../services/firebase/firebase";
+// import { createUserWithEmailAndPassword } from "firebase/auth";
+import { setNewTailor } from "../../services/actions/setNewTailor";
 
-const LoginComponent = () => {
+const RegisterComponent = () => {
   const [formValue, setFormValue] = useState({});
-
+  console.log(formValue);
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -14,20 +15,24 @@ const LoginComponent = () => {
   // console.log(formValue);
   const router = useRouter();
 
-  const loginUser = async (e) => {
+  const registerUser = async (e) => {
     // console.log("button clicked", formValue);
     e.preventDefault();
-    const email = formValue.email;
-    const password = formValue.password;
-    const res = await signInWithEmailAndPassword(auth, email, password);
+    // const email = formValue.email;
+    // const password = formValue.password;
+    // const res = await createUserWithEmailAndPassword(auth, email, password);
+
+    // TODO: create a firestore document with the firstname, lastname, email and Password
+
     // console.log(res);
-    // router.push("/clients");
-    router.back();
+    await setNewTailor(formValue);
+    router.push("/clients");
+    // router.back();
   };
 
   const handleClick = (e) => {
     e.preventDefault();
-    router.push("/register");
+    router.push("/login");
     // console.log("final Data:", formValue);
   };
 
@@ -37,19 +42,52 @@ const LoginComponent = () => {
         <div className="bg-white py-6 sm:py-8 lg:py-12">
           <div className="max-w-screen-2xl px-4 md:px-8 mx-auto">
             <h2 className="text-gray-800 text-2xl lg:text-3xl font-bold text-center mb-4 md:mb-8">
-              Login
+              Register
             </h2>
 
             <form className="max-w-lg border rounded-lg mx-auto">
               <div className="flex flex-col gap-4 p-4 md:p-8">
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label
+                      htmlFor="firstName"
+                      className="inline-block text-gray-800 text-sm sm:text-base mb-2"
+                    >
+                      First Name*
+                    </label>
+                    <input
+                      required
+                      type="text"
+                      name="firstName"
+                      onChange={(e) => handleChange(e)}
+                      className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="lastName"
+                      className="inline-block text-gray-800 text-sm sm:text-base mb-2"
+                    >
+                      Last Name*
+                    </label>
+                    <input
+                      required
+                      type="text"
+                      name="lastName"
+                      onChange={(e) => handleChange(e)}
+                      className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
+                    />
+                  </div>
+                </div>
                 <div>
                   <label
                     htmlFor="email"
                     className="inline-block text-gray-800 text-sm sm:text-base mb-2"
                   >
-                    Email
+                    Email*
                   </label>
                   <input
+                    required
                     type="email"
                     name="email"
                     onChange={(e) => handleChange(e)}
@@ -62,9 +100,10 @@ const LoginComponent = () => {
                     htmlFor="password"
                     className="inline-block text-gray-800 text-sm sm:text-base mb-2"
                   >
-                    Password
+                    Password*
                   </label>
                   <input
+                    required
                     type="password"
                     name="password"
                     onChange={(e) => handleChange(e)}
@@ -73,16 +112,16 @@ const LoginComponent = () => {
                 </div>
 
                 <button
-                  onClick={(e) => loginUser(e)}
+                  onClick={(e) => registerUser(e)}
                   className="block bg-gray-800 hover:bg-gray-700 active:bg-gray-600 focus-visible:ring ring-gray-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3"
                 >
-                  Log in
+                  Register
                 </button>
 
                 <div className="flex justify-center items-center relative">
                   <span className="h-px bg-gray-300 absolute inset-x-0"></span>
                   <span className="bg-white text-gray-400 text-sm relative px-4">
-                    Log in with social
+                    Register with social
                   </span>
                 </div>
 
@@ -135,13 +174,13 @@ const LoginComponent = () => {
 
               <div className="flex justify-center items-center bg-gray-100 p-4">
                 <p className="text-gray-500 text-sm text-center">
-                  Don't have an account?{" "}
+                  Already have an account?{" "}
                   <a
                     href="!#"
                     onClick={(e) => handleClick(e)}
                     className="text-indigo-500 hover:text-indigo-600 active:text-indigo-700 transition duration-100"
                   >
-                    Register
+                    Log in
                   </a>
                 </p>
               </div>
@@ -153,4 +192,4 @@ const LoginComponent = () => {
   );
 };
 
-export default LoginComponent;
+export default RegisterComponent;

@@ -1,19 +1,16 @@
 import React, { useState } from "react";
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
+import { MenuIcon, XIcon } from "@heroicons/react/outline";
 // import Link from "next/link";
 import { useRouter } from "next/router";
 // import Link from "next/link";
 // import { route } from "next/dist/server/router";
-const navigation = [
-  { name: "Home", href: "/", current: false },
-  // { name: "Services", href: "/services", current: true },
-  // { name: "People", href: "/profiles", current: false },
-  { name: "About", href: "/about", current: false },
-];
+import { signOut } from "firebase/auth";
+import { auth } from "../../../services/firebase/firebase";
+import { useUser } from "../../../services/context/userContext";
 
-const loggedInNav = [
+const navigation = [
   { name: "Home", href: "/", current: false },
   // { name: "Dashboard", href: "/dashboard", current: true },
   { name: "Clients", href: "/clients", current: false },
@@ -26,16 +23,19 @@ function classNames(...classes) {
 
 export default function NavHeader() {
   // const [currentLink, setCurrentLink] = useState(false);
+  const { user } = useUser();
   const router = useRouter();
-
+  // console.log(user);
   const handleClick = (e, href) => {
     e.preventDefault();
     router.push(href);
     // console.log("router: ", router.pathname);
   };
-  const handleLogin = (e, href) => {
-    e.preventDefault();
-    router.push(href);
+  const handleLogout = async (e, href) => {
+    // e.preventDefault();
+    await signOut(auth);
+    handleClick(e, href);
+
     // console.log("router: ", router.pathname);
   };
 
@@ -84,71 +84,33 @@ export default function NavHeader() {
                 </div>
                 <div className="hidden sm:flex sm:ml-6 items-center">
                   <div className="flex space-x-4">
-                    {false
-                      ? navigation.map((item) => (
-                          <a
-                            key={item.name}
-                            href={item.href}
-                            className={classNames(
-                              // item.current
-                              router.pathname === item.href
-                                ? "bg-gray-900 text-white"
-                                : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                              "px-3 py-2 rounded-md text-md font-medium cursor-pointer transition duration-500 ease-in-out"
-                            )}
-                            aria-current={
-                              router.pathname === item.href ? "page" : undefined
-                            }
-                            onClick={(e) => handleClick(e, item.href)}
-                          >
-                            {item.name}
-                          </a>
-                        ))
-                      : loggedInNav.map((item) => (
-                          <a
-                            key={item.name}
-                            href={item.href}
-                            className={classNames(
-                              // item.current
-                              router.pathname === item.href
-                                ? "bg-gray-900 text-white"
-                                : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                              "px-3 py-2 rounded-md text-md font-medium cursor-pointer transition duration-500 ease-in-out"
-                            )}
-                            aria-current={
-                              router.pathname === item.href ? "page" : undefined
-                            }
-                            onClick={(e) => handleClick(e, item.href)}
-                          >
-                            {item.name}
-                          </a>
-                        ))}
+                    {navigation.map((item) => (
+                      <a
+                        key={item.name}
+                        href={item.href}
+                        className={classNames(
+                          // item.current
+                          router.pathname === item.href
+                            ? "bg-gray-900 text-white"
+                            : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                          "px-3 py-2 rounded-md text-md font-medium cursor-pointer transition duration-500 ease-in-out"
+                        )}
+                        aria-current={
+                          router.pathname === item.href ? "page" : undefined
+                        }
+                        onClick={(e) => handleClick(e, item.href)}
+                      >
+                        {item.name}
+                      </a>
+                    ))}
                   </div>
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                {/* <button
-                  type="button"
-                  className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white transition duration-300 ease-in-out"
-                >
-                  <span className="sr-only">View notifications</span>
-                  <BellIcon className="h-6 w-6" aria-hidden="true" />
-                </button> */}
-
-                {/* <a
-                  href="#_"
-                  className="ml-2 relative inline-flex items-center justify-start px-4 py-2 overflow-hidden font-medium transition-all bg-white rounded-lg hover:bg-white group"
-                >
-                  <span className="w-48 h-48 rounded-lg rotate-[-40deg] bg-blue-600 absolute bottom-0 left-0 -translate-x-full ease-out duration-500 transition-all translate-y-full mb-9 ml-9 group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0"></span>
-                  <span className="relative w-full text-left text-black transition-colors duration-300 ease-in-out group-hover:text-white">
-                    Join Us
-                  </span>
-                </a> */}
-                {/* Profile dropdown */}
-                {true ? (
+                {!user ? (
                   <a
                     href="!#"
-                    onClick={(e) => handleLogin(e, "/login")}
+                    onClick={(e) => handleClick(e, "/login")}
                     className="rounded-md px-3.5 py-2 m-1 overflow-hidden relative group cursor-pointer border-2 font-medium border-indigo-600 text-indigo-600"
                   >
                     <span className="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-indigo-600 top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
@@ -192,23 +154,14 @@ export default function NavHeader() {
                             </a>
                           )}
                         </Menu.Item>
+
                         <Menu.Item>
                           {({ active }) => (
                             <a
                               href="#"
-                              className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700"
-                              )}
-                            >
-                              Settings
-                            </a>
-                          )}
-                        </Menu.Item>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <a
-                              href="#"
+                              onClick={(e) => {
+                                handleLogout(e, "/");
+                              }}
                               className={classNames(
                                 active ? "bg-gray-100" : "",
                                 "block px-4 py-2 text-sm text-gray-700"
@@ -237,7 +190,7 @@ export default function NavHeader() {
           >
             <Disclosure.Panel className="sm:hidden">
               <div className="px-2 pt-2 pb-3 space-y-1">
-                {/* {navigation.map((item) => (
+                {navigation.map((item) => (
                   <a
                     key={item.name}
                     href={item.href}
@@ -246,7 +199,7 @@ export default function NavHeader() {
                       router.pathname === item.href
                         ? "bg-gray-900 text-white"
                         : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                      "block px-3 py-2 rounded-md text-base font-medium "
+                      " block px-3 py-2 rounded-md text-md font-medium cursor-pointer transition duration-500 ease-in-out"
                     )}
                     aria-current={
                       router.pathname === item.href ? "page" : undefined
@@ -255,46 +208,7 @@ export default function NavHeader() {
                   >
                     {item.name}
                   </a>
-                ))} */}
-                {false
-                  ? navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className={classNames(
-                          // item.current
-                          router.pathname === item.href
-                            ? "bg-gray-900 text-white"
-                            : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                          " block px-3 py-2 rounded-md text-md font-medium cursor-pointer transition duration-500 ease-in-out"
-                        )}
-                        aria-current={
-                          router.pathname === item.href ? "page" : undefined
-                        }
-                        onClick={(e) => handleClick(e, item.href)}
-                      >
-                        {item.name}
-                      </a>
-                    ))
-                  : loggedInNav.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className={classNames(
-                          // item.current
-                          router.pathname === item.href
-                            ? "bg-gray-900 text-white"
-                            : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                          "block px-3 py-2 rounded-md text-md font-medium cursor-pointer transition duration-500 ease-in-out"
-                        )}
-                        aria-current={
-                          router.pathname === item.href ? "page" : undefined
-                        }
-                        onClick={(e) => handleClick(e, item.href)}
-                      >
-                        {item.name}
-                      </a>
-                    ))}
+                ))}
               </div>
             </Disclosure.Panel>
           </Transition>

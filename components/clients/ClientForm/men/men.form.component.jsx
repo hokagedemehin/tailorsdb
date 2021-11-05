@@ -35,6 +35,7 @@ const MenMeasuementForm = ({ handleChange, formValue }) => {
                         Body Length
                       </label>
                       <input
+                        type="number"
                         name="bodyLength"
                         // value={formValue.bodyLength}
                         onChange={(e) => handleChange(e)}
@@ -49,6 +50,7 @@ const MenMeasuementForm = ({ handleChange, formValue }) => {
                         Body Width
                       </label>
                       <input
+                        type="number"
                         name="bodyWidth"
                         // value={formValue.bodyWidth}
                         onChange={(e) => handleChange(e)}
@@ -63,6 +65,7 @@ const MenMeasuementForm = ({ handleChange, formValue }) => {
                         Shoulder Width
                       </label>
                       <input
+                        type="number"
                         name="shoulderWidth"
                         // value={formValue.shoulderWidth}
                         onChange={(e) => handleChange(e)}
@@ -77,6 +80,7 @@ const MenMeasuementForm = ({ handleChange, formValue }) => {
                         Neck/Short Sleeve Length
                       </label>
                       <input
+                        type="number"
                         name="neckShortSleeve"
                         // value={formValue.neckShortSleeve}
                         onChange={(e) => handleChange(e)}
@@ -91,6 +95,7 @@ const MenMeasuementForm = ({ handleChange, formValue }) => {
                         Neck/Long Sleeve Length
                       </label>
                       <input
+                        type="number"
                         name="neckLongSleeve"
                         // value={formValue.neckLongSleeve}
                         onChange={(e) => handleChange(e)}
@@ -105,6 +110,7 @@ const MenMeasuementForm = ({ handleChange, formValue }) => {
                         Sleeve Length
                       </label>
                       <input
+                        type="number"
                         name="sleeveLength"
                         // value={formValue.sleeveLength}
                         onChange={(e) => handleChange(e)}
@@ -119,6 +125,7 @@ const MenMeasuementForm = ({ handleChange, formValue }) => {
                         Neck Width
                       </label>
                       <input
+                        type="number"
                         name="neckWidth"
                         // value={formValue.neckWidth}
                         onChange={(e) => handleChange(e)}
@@ -133,6 +140,7 @@ const MenMeasuementForm = ({ handleChange, formValue }) => {
                         Cuffs Width
                       </label>
                       <input
+                        type="number"
                         name="wristWidth"
                         // value={formValue.wristWidth}
                         onChange={(e) => handleChange(e)}
@@ -166,6 +174,7 @@ const MenMeasuementForm = ({ handleChange, formValue }) => {
                         Leg Length / OutSeam
                       </label>
                       <input
+                        type="number"
                         name="legLength"
                         // value={formValue.bodyLength}
                         onChange={(e) => handleChange(e)}
@@ -180,6 +189,7 @@ const MenMeasuementForm = ({ handleChange, formValue }) => {
                         InSeam
                       </label>
                       <input
+                        type="number"
                         name="innerLength"
                         // value={formValue.bodyLength}
                         onChange={(e) => handleChange(e)}
@@ -194,6 +204,7 @@ const MenMeasuementForm = ({ handleChange, formValue }) => {
                         Waist Width
                       </label>
                       <input
+                        type="number"
                         name="waistWidth"
                         // value={formValue.neckShortSleeve}
                         onChange={(e) => handleChange(e)}
@@ -208,6 +219,7 @@ const MenMeasuementForm = ({ handleChange, formValue }) => {
                         Thigh Width
                       </label>
                       <input
+                        type="number"
                         name="thighWidth"
                         // value={formValue.bodyWidth}
                         onChange={(e) => handleChange(e)}
@@ -222,6 +234,7 @@ const MenMeasuementForm = ({ handleChange, formValue }) => {
                         Seat
                       </label>
                       <input
+                        type="number"
                         name="seat"
                         // value={formValue.bodyWidth}
                         onChange={(e) => handleChange(e)}
@@ -237,6 +250,7 @@ const MenMeasuementForm = ({ handleChange, formValue }) => {
                         Knee Width
                       </label>
                       <input
+                        type="number"
                         name="knee"
                         // value={formValue.shoulderWidth}
                         onChange={(e) => handleChange(e)}
@@ -251,6 +265,7 @@ const MenMeasuementForm = ({ handleChange, formValue }) => {
                         Rise
                       </label>
                       <input
+                        type="number"
                         name="rise"
                         // value={formValue.shoulderWidth}
                         onChange={(e) => handleChange(e)}
@@ -265,6 +280,7 @@ const MenMeasuementForm = ({ handleChange, formValue }) => {
                         Bottom/Feet Width
                       </label>
                       <input
+                        type="number"
                         name="feetWidth"
                         // value={formValue.shoulderWidth}
                         onChange={(e) => handleChange(e)}
@@ -297,6 +313,7 @@ const MenMeasuementForm = ({ handleChange, formValue }) => {
                         Head Width
                       </label>
                       <input
+                        type="number"
                         name="headWidth"
                         // value={formValue.bodyLength}
                         onChange={(e) => handleChange(e)}
@@ -329,6 +346,7 @@ const MenMeasuementForm = ({ handleChange, formValue }) => {
                         Point to Point (Shoulders)
                       </label>
                       <input
+                        type="number"
                         name="pointToPoint"
                         // value={formValue.bodyLength}
                         onChange={(e) => handleChange(e)}
@@ -343,6 +361,7 @@ const MenMeasuementForm = ({ handleChange, formValue }) => {
                         Chest
                       </label>
                       <input
+                        type="number"
                         name="Chest"
                         // value={formValue.bodyWidth}
                         onChange={(e) => handleChange(e)}
@@ -357,6 +376,7 @@ const MenMeasuementForm = ({ handleChange, formValue }) => {
                         Half Back Length
                       </label>
                       <input
+                        type="number"
                         name="halfBackLength"
                         // value={formValue.shoulderWidth}
                         onChange={(e) => handleChange(e)}
@@ -371,6 +391,7 @@ const MenMeasuementForm = ({ handleChange, formValue }) => {
                         Suit Waist / Stomach
                       </label>
                       <input
+                        type="number"
                         name="waistStomachWidth"
                         // value={formValue.neckShortSleeve}
                         onChange={(e) => handleChange(e)}
@@ -385,6 +406,7 @@ const MenMeasuementForm = ({ handleChange, formValue }) => {
                         Suit Length
                       </label>
                       <input
+                        type="number"
                         name="suitLength"
                         // value={formValue.neckLongSleeve}
                         onChange={(e) => handleChange(e)}
@@ -399,6 +421,7 @@ const MenMeasuementForm = ({ handleChange, formValue }) => {
                         Sleeve Length
                       </label>
                       <input
+                        type="number"
                         name="sleeveLength"
                         // value={formValue.sleeveLength}
                         onChange={(e) => handleChange(e)}
@@ -413,6 +436,7 @@ const MenMeasuementForm = ({ handleChange, formValue }) => {
                         Cuffs Width
                       </label>
                       <input
+                        type="number"
                         name="cuffsWidth"
                         // value={formValue.neckWidth}
                         onChange={(e) => handleChange(e)}

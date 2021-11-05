@@ -10,74 +10,7 @@ function classNames(...classes) {
 }
 
 export default function AddNewClient() {
-  // let [categories] = useState({
-  //   Recent: [
-  //     {
-  //       id: 1,
-  //       title: "Does drinking coffee make you smarter?",
-  //       date: "5h ago",
-  //       commentCount: 5,
-  //       shareCount: 2,
-  //     },
-  //     {
-  //       id: 2,
-  //       title: "So you've bought coffee... now what?",
-  //       date: "2h ago",
-  //       commentCount: 3,
-  //       shareCount: 2,
-  //     },
-  //   ],
-  //   Popular: [
-  //     {
-  //       id: 1,
-  //       title: "Is tech making coffee better or worse?",
-  //       date: "Jan 7",
-  //       commentCount: 29,
-  //       shareCount: 16,
-  //     },
-  //     {
-  //       id: 2,
-  //       title: "The most innovative things happening in coffee",
-  //       date: "Mar 19",
-  //       commentCount: 24,
-  //       shareCount: 12,
-  //     },
-  //   ],
-  //   Trending: [
-  //     {
-  //       id: 1,
-  //       title: "Ask Me Anything: 10 answers to your questions about coffee",
-  //       date: "2d ago",
-  //       commentCount: 9,
-  //       shareCount: 5,
-  //     },
-  //     {
-  //       id: 2,
-  //       title: "The worst advice we've ever heard about coffee",
-  //       date: "4d ago",
-  //       commentCount: 1,
-  //       shareCount: 2,
-  //     },
-  //   ],
-  // });
-
-  const [formValue, setFormValue] = useState({
-    // fullName: "",
-    // PhoneNo: "",
-    // gender: "",
-    // birthDay: "",
-    // photo: "",
-    // address: "",
-    // bodyLength: "",
-    // bodyWidth: "",
-    // shoulderWidth: "",
-    // neckShortSleeve: "",
-    // neckLongSleeve: "",
-    // sleeveLength: "",
-    // neckWidth: "",
-    // wristWidth: "",
-    // photo: "",
-  });
+  const [formValue, setFormValue] = useState({});
 
   const handleFileUpload = (e) => {
     const name = e.target.name;
@@ -95,7 +28,7 @@ export default function AddNewClient() {
   const handleSubmit = (e) => {
     e.preventDefault();
     router.push("/clients/success");
-    // console.log("final Data:", formValue);
+    console.log("final Data:", formValue);
   };
   // console.log(formValue);
   return (
@@ -132,7 +65,7 @@ export default function AddNewClient() {
                   <input
                     type="text"
                     name="fullName"
-                    required="required"
+                    // required="required"
                     // value={formValue?.fullName}
                     onChange={(e) => handleChange(e)}
                     className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
@@ -164,14 +97,16 @@ export default function AddNewClient() {
                   <select
                     id="gender"
                     name="gender"
+                    // required
+                    required="required"
                     // value={formValue?.gender}
                     onChange={(e) => handleChange(e)}
                     // autoComplete="gender-name"
                     className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-300 focus:border-indigo-300 sm:text-sm"
                   >
-                    <option>Choose Gender...</option>
-                    <option>Male</option>
-                    <option>Female</option>
+                    <option value="">Choose Gender...</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
                   </select>
                 </div>
                 <div className="">

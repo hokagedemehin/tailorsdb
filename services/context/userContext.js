@@ -16,7 +16,7 @@ export default function UserContextComp({ children }) {
   const [userDoc, setUserDoc] = useState(null);
   const [loadingUser, setLoadingUser] = useState(true);
   let userDocs = "";
-  console.log("user: ", user);
+  // console.log("user: ", user);
   // console.log("user uid: ", user?.uid);
   // const db1 = getFirestore(app, "tailors", "8ZiT7YHKNcUEeUCFMACgTH6lwCp2");
   // console.log(db1);
@@ -74,7 +74,7 @@ export default function UserContextComp({ children }) {
 
           setUser({ uid, displayName, email, photoUrl });
           // setUserDoc({ value, loading, error });
-          console.log("userDocs: ", userDocs.data());
+          // console.log("userDocs: ", userDocs.data());
         } else setUser(null);
       } catch (error) {
         console.error(error);
