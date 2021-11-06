@@ -4,7 +4,7 @@
 // const runtimeCaching = require("next-pwa/cache");
 module.exports = {
   images: {
-    domains: ["avatars.dicebear.com"],
+    domains: ["avatars.dicebear.com", "doodleipsum.com"],
   },
 };
 

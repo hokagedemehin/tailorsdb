@@ -4,15 +4,16 @@ import { Disclosure } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/solid";
 import ClientsMenDetails from "./clients.men.details..component";
 import ClientsWomenDetails from "./clients.women.details..component";
-const ClientsAllDetails = ({ props }) => {
+
+const ClientsAllDetails = ({ allDetails }) => {
   // console.log(props);
-  const { gender } = props;
+  const { gender } = allDetails;
   return (
     <div className="">
       {gender === "male" ? (
-        <ClientsMenDetails props={props} />
+        <ClientsMenDetails allDetails={allDetails} />
       ) : (
-        <ClientsWomenDetails props={props} />
+        <ClientsWomenDetails allDetails={allDetails} />
       )}
     </div>
   );

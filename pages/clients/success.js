@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useRouter } from "next/router";
+import { useUser } from "../../services/context/userContext";
 
 const SuccessPage = () => {
   const router = useRouter();
+  // const router = useRouter();
+  const { user } = useUser();
+  // console.log(user);
+  useEffect(() => {
+    if (!user) {
+      router.push("/");
+    }
+  }, [user]);
+
   const handleClick = (e) => {
     e.preventDefault();
     router.push("/clients");

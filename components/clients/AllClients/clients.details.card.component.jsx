@@ -5,9 +5,10 @@ import { ChevronUpIcon } from "@heroicons/react/solid";
 import ClientsWomenDetails from "./clients.women.details..component";
 import ClientsMenDetails from "./clients.men.details..component";
 import ClientsAllDetails from "./clients.all.details..component";
-const ClientsDetails = ({ isOpen, closeModal, props, gender }) => {
-  const { name } = props;
-  // console.log(gender);
+
+const ClientsDetails = ({ isOpen, closeModal, allDetails }) => {
+  const { fullName } = allDetails;
+  // console.log(props);
   return (
     <div>
       {/* <div className="fixed inset-0 flex items-center justify-center">
@@ -60,7 +61,7 @@ const ClientsDetails = ({ isOpen, closeModal, props, gender }) => {
                   as="h3"
                   className="text-xl font-medium leading-6 text-gray-900"
                 >
-                  {name}
+                  {fullName}
                 </Dialog.Title>
                 <Dialog.Description as="div" className="mt-2">
                   <div className="grid gird-cols-2 gap-2 text-sm text-left">
@@ -77,7 +78,7 @@ const ClientsDetails = ({ isOpen, closeModal, props, gender }) => {
                       <span>40 Admiralty way, Lekki Phase 1</span>
                     </div>
                     <div className="col-span-2">
-                      <ClientsAllDetails props={props} />
+                      <ClientsAllDetails allDetails={allDetails} />
                     </div>
                   </div>
                 </Dialog.Description>

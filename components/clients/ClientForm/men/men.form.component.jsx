@@ -355,14 +355,14 @@ const MenMeasuementForm = ({ handleChange, formValue }) => {
                     </div>
                     <div>
                       <label
-                        htmlFor="Chest"
+                        htmlFor="chest"
                         className="inline-block text-gray-800 text-sm sm:text-base mb-2"
                       >
                         Chest
                       </label>
                       <input
                         type="number"
-                        name="Chest"
+                        name="chest"
                         // value={formValue.bodyWidth}
                         onChange={(e) => handleChange(e)}
                         className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"

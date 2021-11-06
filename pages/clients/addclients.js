@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Tab } from "@headlessui/react";
 import Layout from "../../components/layout/layout";
 import { useRouter } from "next/router";
 import MenMeasuementForm from "../../components/clients/ClientForm/men/men.form.component";
 import WomenMeasuementForm from "../../components/clients/ClientForm/women/women.form.component";
+import { setNewClient } from "../../services/actions/setNewClient";
+import { useUser } from "../../services/context/userContext";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -11,6 +13,14 @@ function classNames(...classes) {
 
 export default function AddNewClient() {
   const [formValue, setFormValue] = useState({});
+  const { userDoc, user } = useUser();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!user) {
+      router.push("/");
+    }
+  }, [user]);
 
   const handleFileUpload = (e) => {
     const name = e.target.name;
@@ -24,11 +34,12 @@ export default function AddNewClient() {
     setFormValue({ ...formValue, [name]: value });
   };
 
-  const router = useRouter();
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    await setNewClient(formValue, userDoc, user);
     router.push("/clients/success");
-    console.log("final Data:", formValue);
+
+    // console.log("final Data:", formValue);
   };
   // console.log(formValue);
   return (
@@ -74,14 +85,14 @@ export default function AddNewClient() {
 
                 <div>
                   <label
-                    htmlFor="PhoneNo"
+                    htmlFor="phoneNo"
                     className="inline-block text-gray-800 text-sm sm:text-base mb-2"
                   >
                     Phone Number
                   </label>
                   <input
                     type="tel"
-                    name="PhoneNo"
+                    name="phoneNo"
                     onChange={(e) => handleChange(e)}
                     // value={formValue?.PhoneNo}
                     className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"

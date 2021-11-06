@@ -8,7 +8,8 @@ import { useRouter } from "next/router";
 // import { route } from "next/dist/server/router";
 import { signOut } from "firebase/auth";
 import { auth } from "../../../services/firebase/firebase";
-import { useUser } from "../../../services/context/userContext";
+import { useUser, UserContext } from "../../../services/context/userContext";
+import { useContext } from "react";
 
 const navigation = [
   { name: "Home", href: "/", current: false },
@@ -23,7 +24,8 @@ function classNames(...classes) {
 
 export default function NavHeader() {
   // const [currentLink, setCurrentLink] = useState(false);
-  const { user } = useUser();
+  // const { user } = useUser();
+  const { user } = useContext(UserContext);
   const router = useRouter();
   // console.log(user);
   const handleClick = (e, href) => {

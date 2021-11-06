@@ -2,9 +2,9 @@ import React from "react";
 import { Disclosure } from "@headlessui/react";
 // import { Disclosure } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/solid";
-const ClientsWomenDetails = ({ props }) => {
-  const { name } = props;
-  // console.log(props);
+const ClientsWomenDetails = ({ allDetails }) => {
+  const { fullName } = allDetails;
+  // console.log(allDetails);
   return (
     <div className="grid gird-cols-2 gap-2 text-sm text-left">
       <div className="col-span-2">
@@ -111,7 +111,7 @@ const ClientsWomenDetails = ({ props }) => {
               <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-black">
                 <div className="grid grid-cols-2 gap-4 mx-auto">
                   <div>
-                    <span className="font-semibold">Cap: </span>
+                    <span className="font-semibold"> Women Cap: </span>
                     <span>14</span>
                   </div>
                 </div>

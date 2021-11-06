@@ -6,7 +6,7 @@ import { setNewTailor } from "../../services/actions/setNewTailor";
 
 const RegisterComponent = () => {
   const [formValue, setFormValue] = useState({});
-  console.log(formValue);
+  // console.log(formValue);
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -18,15 +18,10 @@ const RegisterComponent = () => {
   const registerUser = async (e) => {
     // console.log("button clicked", formValue);
     e.preventDefault();
-    // const email = formValue.email;
-    // const password = formValue.password;
-    // const res = await createUserWithEmailAndPassword(auth, email, password);
-
-    // TODO: create a firestore document with the firstname, lastname, email and Password
 
     // console.log(res);
     await setNewTailor(formValue);
-    router.push("/clients");
+    // router.push("/clients");
     // router.back();
   };
 

@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp, getApp, getApps } from "firebase/app";
 // import firebase from 'firebase/app'
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, enableIndexedDbPersistence } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 // import * as admin from 'firebase-admin'
@@ -30,6 +30,19 @@ const firebaseConfig = {
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 // const analytics = getAnalytics(app);
 const db = getFirestore(app);
+enableIndexedDbPersistence(db).catch((err) => {
+  if (err.code == "failed-precondition") {
+    // Multiple tabs open, persistence can only be enabled
+    // in one tab at a a time.
+    // ...
+    console.error("failed precondition");
+  } else if (err.code == "unimplemented") {
+    // The current browser does not support all of the
+    // features required to enable persistence
+    // ...
+    console.error("unimplemented");
+  }
+});
 const auth = getAuth(app);
 const storage = getStorage(app);
 

@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ClientsDetails from "./clients.details.card.component";
+import { useUser } from "../../../services/context/userContext";
+// import { getAllClients } from "../../../services/actions/getAllClients";
 
-const ClientsCard = (props) => {
-  const { image, name, phoneNo, gender } = props;
-  // console.log(gender);
+const ClientsCard = ({ allDetails }) => {
+  const { image, fullName, phoneNo, gender } = allDetails;
+  // console.log(allDetails);
   let [isOpen, setIsOpen] = useState(false);
 
   function closeModal() {
@@ -25,14 +27,14 @@ const ClientsCard = (props) => {
             <img
               src={image}
               loading="lazy"
-              alt={name}
+              alt={fullName}
               className="w-full h-full object-cover object-center"
             />
           </div>
 
           <div>
             <div className="text-indigo-500 md:text-lg font-bold text-center">
-              {name}
+              {fullName}
             </div>
             <p className="text-gray-500 text-sm md:text-base text-center mb-3 md:mb-4">
               {phoneNo}
@@ -43,7 +45,7 @@ const ClientsCard = (props) => {
         <ClientsDetails
           isOpen={isOpen}
           closeModal={closeModal}
-          props={props}
+          allDetails={allDetails}
           gender={gender}
         />
       </div>

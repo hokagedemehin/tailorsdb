@@ -5,16 +5,13 @@ import { useRouter } from "next/router";
 import ClientSearch from "./client.search.component";
 import PaginationComp from "../../utils/pagination";
 import { useUser } from "../../../services/context/userContext";
-import { db } from "../../../services/firebase/firebase";
-
-const ClientsList = () => {
-  const { user, setUser, loadingUser, userDocs, userDoc } = useUser();
-
-  useEffect(() => {
-    console.log(user, loadingUser, userDocs, userDoc);
-  }, []);
-
-  const [clients] = useState([]);
+// import { db } from "../../../services/firebase/firebase";
+// import { useUser } from "../../../services/context/userContext";
+import { getAllClients } from "../../../services/actions/getAllClients";
+const ClientsList = (props) => {
+  const { allDocs } = useUser();
+  // console.log(allDocs);
+  // const [clients] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [clientPerPage] = useState(8);
   const [searchTerm, setSearchTerm] = useState("");
@@ -28,11 +25,15 @@ const ClientsList = () => {
     router.push("/clients/addclients");
   };
 
-  const data1 = [...data];
+  // const data1 = [...data];
+  const data1 = [];
+  if (allDocs) {
+    data1 = [...allDocs];
+  }
   const data2 = data1.filter((val) => {
     if (searchTerm == "" || searchTerm.length === 0) {
       return val;
-    } else if (val.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+    } else if (val.fullName.toLowerCase().includes(searchTerm.toLowerCase())) {
       return val;
     }
   });
@@ -56,14 +57,8 @@ const ClientsList = () => {
           />
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-8">
-            {currentClients?.map(({ name, image, phoneNo, gender }, index) => (
-              <ClientsCard
-                key={index}
-                image={image}
-                name={name}
-                phoneNo={phoneNo}
-                gender={gender}
-              />
+            {currentClients?.map((allDetails, index) => (
+              <ClientsCard key={index} allDetails={allDetails} />
             ))}
           </div>
         </div>
@@ -74,3 +69,12 @@ const ClientsList = () => {
 };
 
 export default ClientsList;
+
+// export const getServerSideProps = async ({ params }) => {
+//   console.log("params: ", params);
+//   const { user } = useUser;
+//   const result = await getAllClients(user);
+//   return {
+//     props: { data: result },
+//   };
+// };

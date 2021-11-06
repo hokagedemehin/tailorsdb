@@ -22,7 +22,7 @@ const LoginComponent = () => {
     const res = await signInWithEmailAndPassword(auth, email, password);
     // console.log(res);
     // router.push("/clients");
-    router.back();
+    // router.back();
   };
 
   const handleClick = (e) => {
