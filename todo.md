@@ -12,3 +12,4 @@
 - [ ] Firebase image upload for tailors profile
 - [ ] firebase storages folder structure
 - [ ] Footer Links
+- [ ] firebase security rules
