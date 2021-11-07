@@ -8,8 +8,8 @@ import { useRouter } from "next/router";
 // import { route } from "next/dist/server/router";
 import { signOut } from "firebase/auth";
 import { auth } from "../../../services/firebase/firebase";
-import { useUser, UserContext } from "../../../services/context/userContext";
-import { useContext } from "react";
+import { useUser } from "../../../services/context/userContext";
+// import { useContext } from "react";
 
 const navigation = [
   { name: "Home", href: "/", current: false },
@@ -24,10 +24,10 @@ function classNames(...classes) {
 
 export default function NavHeader() {
   // const [currentLink, setCurrentLink] = useState(false);
-  // const { user } = useUser();
-  const { user } = useContext(UserContext);
+  const { user, userDoc } = useUser();
+  const image = userDoc?.image;
   const router = useRouter();
-  // console.log(user);
+  // console.log(userDoc);
   const handleClick = (e, href) => {
     e.preventDefault();
     router.push(href);
@@ -36,7 +36,7 @@ export default function NavHeader() {
   const handleLogout = async (e, href) => {
     // e.preventDefault();
     await signOut(auth);
-    handleClick(e, href);
+    handleClick(e, "/");
 
     // console.log("router: ", router.pathname);
   };
@@ -128,7 +128,12 @@ export default function NavHeader() {
                         <span className="sr-only">Open user menu</span>
                         <img
                           className="h-8 w-8 rounded-full"
-                          src="https://avatars.dicebear.com/api/micah/tailor.svg?mouth[]=laughing"
+                          src={
+                            !image
+                              ? "https://avatars.dicebear.com/api/micah/:child.svg?mouth[]=laughing&mouth[]=smile&glassesProbability=100"
+                              : image
+                          }
+                          // src="https://avatars.dicebear.com/api/micah/:child.svg?mouth[]=laughing&mouth[]=smile&glassesProbability=100"
                           alt="profile image"
                         />
                       </Menu.Button>
@@ -147,6 +152,7 @@ export default function NavHeader() {
                           {({ active }) => (
                             <a
                               href="#"
+                              onClick={(e) => handleClick(e, "/profile")}
                               className={classNames(
                                 active ? "bg-gray-100" : "",
                                 "block px-4 py-2 text-sm text-gray-700"

@@ -5,22 +5,29 @@ import { ChevronUpIcon } from "@heroicons/react/solid";
 import ClientsWomenDetails from "./clients.women.details..component";
 import ClientsMenDetails from "./clients.men.details..component";
 import ClientsAllDetails from "./clients.all.details..component";
+import moment from "moment";
+import ClientEditDetails from "./clients.edit.details.component";
+import { useRouter } from "next/router";
 
 const ClientsDetails = ({ isOpen, closeModal, allDetails }) => {
-  const { fullName } = allDetails;
-  // console.log(props);
+  const { fullName, phoneNo, birthDay, address, id, tailorID } = !allDetails
+    ? {}
+    : allDetails;
+
+  // if (allDetails) {
+  //   console.log(moment(birthDay).format("Do MMM"));
+  // }
+  // console.log(allDetails);
+  const router = useRouter();
+
+  const handleClick = async (e, href) => {
+    e.preventDefault();
+    // await GetSingleClient(allDetails, id)
+    router.push(href);
+    // console.log("router: ", router.pathname);
+  };
   return (
     <div>
-      {/* <div className="fixed inset-0 flex items-center justify-center">
-        <button
-          type="button"
-          onClick={openModal}
-          className="px-4 py-2 text-sm font-medium text-white bg-black rounded-md bg-opacity-20 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
-        >
-          Open dialog
-        </button>
-      </div> */}
-
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog
           as="div"
@@ -67,15 +74,15 @@ const ClientsDetails = ({ isOpen, closeModal, allDetails }) => {
                   <div className="grid gird-cols-2 gap-2 text-sm text-left">
                     <div>
                       <span className="font-semibold">Phone No: </span>
-                      <span>08065213654</span>
+                      <span>{phoneNo}</span>
                     </div>
                     <div>
                       <span className="font-semibold">Birthday: </span>
-                      <span>9 May</span>
+                      <span>{moment(birthDay).format("Do MMM")}</span>
                     </div>
                     <div className="col-span-2">
                       <span className="font-semibold">Address: </span>
-                      <span>40 Admiralty way, Lekki Phase 1</span>
+                      <span>{address}</span>
                     </div>
                     <div className="col-span-2">
                       <ClientsAllDetails allDetails={allDetails} />
@@ -83,13 +90,22 @@ const ClientsDetails = ({ isOpen, closeModal, allDetails }) => {
                   </div>
                 </Dialog.Description>
 
-                <div className="mt-4">
+                <div className="mt-4 space-x-5">
                   <button
                     type="button"
                     className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
                     onClick={closeModal}
                   >
                     Close
+                  </button>
+                  <button
+                    type="button"
+                    className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+                    onClick={(e) =>
+                      handleClick(e, `/clients/edit/${id}/${tailorID}`)
+                    }
+                  >
+                    Edit
                   </button>
                 </div>
               </div>

@@ -4,9 +4,33 @@ import { Disclosure } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/solid";
 const ClientsMenDetails = ({ allDetails }) => {
   // console.log(allDetails);
-  const { fullName } = allDetails;
+  const {
+    bodyLength,
+    bodyWidth,
+    chest,
+    cuffsWidth,
+    feetWidth,
+    halfBackLength,
+    headWidth,
+    innerLength,
+    knee,
+    legLength,
+    neckShortSleeve,
+    neckLongSleeve,
+    neckWidth,
+    pointToPoint,
+    rise,
+    seat,
+    shoulderWidth,
+    suitLength,
+    sleeveLength,
+    thighWidth,
+    waistStomachWidth,
+    waistWidth,
+    wristWidth,
+  } = !allDetails ? {} : allDetails;
   return (
-    <div className="grid gird-cols-2 gap-2 text-sm text-left">
+    <div className="grid grid-cols-2 gap-2 text-sm text-left">
       <div className="col-span-2">
         <Disclosure>
           {({ open }) => (
@@ -23,39 +47,39 @@ const ClientsMenDetails = ({ allDetails }) => {
                 <div className="grid grid-cols-2 gap-4 mx-auto">
                   <div>
                     <span className="font-semibold">Body Length: </span>
-                    <span>14</span>
+                    <span>{bodyLength}</span>
                   </div>
                   <div>
                     <span className="font-semibold">Body Width: </span>
-                    <span>23</span>
+                    <span>{bodyWidth}</span>
                   </div>
                   <div>
                     <span className="font-semibold">Shoulder Width: </span>
-                    <span>56</span>
+                    <span>{shoulderWidth}</span>
                   </div>
                   <div>
                     <span className="font-semibold">
                       Neck/Short Sleeve Length:{" "}
                     </span>
-                    <span>28</span>
+                    <span>{neckShortSleeve}</span>
                   </div>
                   <div>
                     <span className="font-semibold">
                       Neck/Long Sleeve Length:{" "}
                     </span>
-                    <span>33</span>
+                    <span>{neckLongSleeve}</span>
                   </div>
                   <div>
                     <span className="font-semibold">Sleeve Length: </span>
-                    <span>23</span>
+                    <span>{sleeveLength}</span>
                   </div>
                   <div>
                     <span className="font-semibold">Neck Width: </span>
-                    <span>10</span>
+                    <span>{neckWidth}</span>
                   </div>
                   <div>
-                    <span className="font-semibold">Wrist Width: </span>
-                    <span>9</span>
+                    <span className="font-semibold">Cuffs Width: </span>
+                    <span>{cuffsWidth}</span>
                   </div>
                 </div>
               </Disclosure.Panel>
@@ -77,20 +101,43 @@ const ClientsMenDetails = ({ allDetails }) => {
               <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-black">
                 <div className="grid grid-cols-2 gap-4 mx-auto">
                   <div>
-                    <span className="font-semibold">Leg Length: </span>
-                    <span>14</span>
+                    <span className="font-semibold">
+                      Leg Length / OutSeam:{" "}
+                    </span>
+                    <span>{legLength}</span>
+                  </div>
+                  <div>
+                    <span className="font-semibold">InSeam: </span>
+                    <span>{innerLength}</span>
+                  </div>
+
+                  <div>
+                    <span className="font-semibold">Waist Width: </span>
+                    <span>{waistWidth}</span>
                   </div>
                   <div>
                     <span className="font-semibold">Thigh Width: </span>
-                    <span>23</span>
+                    <span>{thighWidth}</span>
                   </div>
                   <div>
-                    <span className="font-semibold">Feet Width: </span>
-                    <span>56</span>
+                    <span className="font-semibold">Seat: </span>
+                    <span>{seat}</span>
+                  </div>
+                  <div>
+                    <span className="font-semibold">Knee Width: </span>
+                    <span>{knee}</span>
+                  </div>
+                  <div>
+                    <span className="font-semibold">Rise: </span>
+                    <span>{rise}</span>
+                  </div>
+                  <div>
+                    <span className="font-semibold">Bottom/Feet Width: </span>
+                    <span>{feetWidth}</span>
                   </div>
                   <div>
                     <span className="font-semibold">Waist Width: </span>
-                    <span>28</span>
+                    <span>{waistWidth}</span>
                   </div>
                 </div>
               </Disclosure.Panel>
@@ -111,8 +158,8 @@ const ClientsMenDetails = ({ allDetails }) => {
               <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-black">
                 <div className="grid grid-cols-2 gap-4 mx-auto">
                   <div>
-                    <span className="font-semibold">Cap: </span>
-                    <span>14</span>
+                    <span className="font-semibold">Head Width: </span>
+                    <span>{headWidth}</span>
                   </div>
                 </div>
               </Disclosure.Panel>
@@ -133,40 +180,36 @@ const ClientsMenDetails = ({ allDetails }) => {
               <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-black">
                 <div className="grid grid-cols-2 gap-4 mx-auto">
                   <div>
-                    <span className="font-semibold">Body Length: </span>
-                    <span>14</span>
+                    <span className="font-semibold">
+                      Point to Point (Shoulders):{" "}
+                    </span>
+                    <span>{pointToPoint}</span>
                   </div>
                   <div>
-                    <span className="font-semibold">Body Width: </span>
-                    <span>23</span>
+                    <span className="font-semibold">Chest: </span>
+                    <span>{chest}</span>
                   </div>
                   <div>
-                    <span className="font-semibold">Shoulder Width: </span>
-                    <span>56</span>
+                    <span className="font-semibold">Half Back Length: </span>
+                    <span>{halfBackLength}</span>
                   </div>
                   <div>
                     <span className="font-semibold">
-                      Neck/Short Sleeve Length:{" "}
+                      Suit Waist / Stomach:{" "}
                     </span>
-                    <span>28</span>
+                    <span>{waistStomachWidth}</span>
                   </div>
                   <div>
-                    <span className="font-semibold">
-                      Neck/Long Sleeve Length:{" "}
-                    </span>
-                    <span>33</span>
+                    <span className="font-semibold">Suit Length: </span>
+                    <span>{suitLength}</span>
                   </div>
                   <div>
                     <span className="font-semibold">Sleeve Length: </span>
-                    <span>23</span>
+                    <span>{sleeveLength}</span>
                   </div>
                   <div>
-                    <span className="font-semibold">Neck Width: </span>
-                    <span>10</span>
-                  </div>
-                  <div>
-                    <span className="font-semibold">Wrist Width: </span>
-                    <span>9</span>
+                    <span className="font-semibold">Cuffs Width: </span>
+                    <span>{cuffsWidth}</span>
                   </div>
                 </div>
               </Disclosure.Panel>

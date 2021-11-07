@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import { useUser } from "../../services/context/userContext";
+import Head from "next/head";
 
 const SuccessPage = () => {
   const router = useRouter();
@@ -20,6 +21,15 @@ const SuccessPage = () => {
   };
   return (
     <div>
+      <Head>
+        <title>Tailors DB - Success</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta
+          name="description"
+          content="New CLients has been added successfully and you can now view the new client in the client list page"
+        />
+        <link rel="icon" href="/logo/tailorlogo2.png" />
+      </Head>
       <div className="bg-white py-6 sm:py-8 lg:py-12">
         <div className="max-w-screen-lg px-4 md:px-8 mx-auto">
           <div className="grid sm:grid-cols-2 gap-8">

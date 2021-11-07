@@ -5,16 +5,16 @@ import ClientsHero from "../../components/clients/AllClients/clients.hero.compon
 import ClientsList from "../../components/clients/AllClients/clients.list.component";
 import NoUserClientInterface from "../../components/clients/AllClients/clients.notLoggedIn.component";
 import Layout from "../../components/layout/layout";
-import { getAllClients } from "../../services/actions/getAllClients";
+import { GetAllClients } from "../../services/actions/getAllClients";
 import { useUser } from "../../services/context/userContext";
-import { auth, db } from "../../services/firebase/firebase";
+// import { auth, db } from "../../services/firebase/firebase";
 // import PaginationComp from "../../components/utils/pagination";
-import { doc, getDoc } from "firebase/firestore";
+// import { doc, getDoc } from "firebase/firestore";
 
 function Clients(props) {
   // console.log("props: ", props);
-  const { user, userDoc } = useUser();
-  console.log(userDoc);
+  const { user } = useUser();
+  // console.log(userDoc);
   return (
     <Layout
       name="Clients"
@@ -30,11 +30,11 @@ function Clients(props) {
 
 export default Clients;
 
-export async function getServerSideProps() {
-  const result = await getAllClients();
-  return {
-    props: {
-      data: result,
-    },
-  };
-}
+// export async function getServerSideProps() {
+//   const result = await GetAllClients();
+//   return {
+//     props: {
+//       data: result,
+//     },
+//   };
+// }

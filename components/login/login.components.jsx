@@ -1,10 +1,16 @@
 import React, { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithRedirect,
+} from "firebase/auth";
 import { auth } from "../../services/firebase/firebase";
 import { useRouter } from "next/router";
-
+import { useUser } from "../../services/context/userContext";
+import { SetNewGoogleTailor } from "../../services/actions/setGoogleTailor";
 const LoginComponent = () => {
   const [formValue, setFormValue] = useState({});
+  const { user } = useUser();
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -19,10 +25,15 @@ const LoginComponent = () => {
     e.preventDefault();
     const email = formValue.email;
     const password = formValue.password;
-    const res = await signInWithEmailAndPassword(auth, email, password);
+    await signInWithEmailAndPassword(auth, email, password);
     // console.log(res);
     // router.push("/clients");
     // router.back();
+  };
+
+  const googleSignin = async (e) => {
+    // e.preventDefault();
+    await SetNewGoogleTailor();
   };
 
   const handleClick = (e) => {
@@ -103,7 +114,10 @@ const LoginComponent = () => {
                   Continue with Facebook
                 </button>
 
-                <button className="flex justify-center items-center bg-white hover:bg-gray-100 active:bg-gray-200 border border-gray-300 focus-visible:ring ring-gray-300 text-gray-800 text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 gap-2 px-8 py-3">
+                <button
+                  onClick={(e) => googleSignin(e)}
+                  className="flex justify-center items-center bg-white hover:bg-gray-100 active:bg-gray-200 border border-gray-300 focus-visible:ring ring-gray-300 text-gray-800 text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 gap-2 px-8 py-3"
+                >
                   <svg
                     className="w-5 h-5 flex-shrink-0"
                     width="24"

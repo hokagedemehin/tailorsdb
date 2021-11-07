@@ -1,7 +1,8 @@
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 import { useUser } from "../context/userContext";
-export const getAllClients = async () => {
+
+export const GetAllClients = async () => {
   // TODO: read the firestore database and get all the clients under this tailors uid
   // console.log("user");
   const { userDoc } = useUser;
@@ -13,7 +14,7 @@ export const getAllClients = async () => {
     allDocs.forEach((doc) => {
       result.push(doc.data());
     });
-    console.log(result);
+    // console.log(result);
   }
   return result;
 };

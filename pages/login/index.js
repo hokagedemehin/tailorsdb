@@ -8,7 +8,7 @@ import { useUser } from "../../services/context/userContext";
 const LoginPage = () => {
   const router = useRouter();
   const { user } = useUser();
-  console.log(user);
+  // console.log(user);
   useEffect(() => {
     if (user) {
       router.back();

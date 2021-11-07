@@ -22,6 +22,7 @@ export default function UserContextComp({ children }) {
   const [userDoc, setUserDoc] = useState(null);
   const [allDocs, setAllDocs] = useState(null);
   const [loadingUser, setLoadingUser] = useState(true);
+
   useEffect(() => {
     const authSub = onAuthStateChanged(auth, async (user) => {
       try {
@@ -29,13 +30,14 @@ export default function UserContextComp({ children }) {
         if (user) {
           // console.log(user);
           const { uid, displayName, email, photoUrl } = user;
-          // console.log(uid, email);
+          // console.log(uid, email, displayName);
 
           setUser({ uid, displayName, email, photoUrl });
 
-          onSnapshot(doc(db, "tailors", uid), (doc) => {
-            setUserDoc(doc.data());
+          onSnapshot(doc(db, "tailors", uid), (docUser) => {
+            setUserDoc(docUser.data());
           });
+          // console.log(userDoc);
 
           const clientListRef = collection(db, email);
           onSnapshot(clientListRef, (alldoc) => {
@@ -46,6 +48,7 @@ export default function UserContextComp({ children }) {
             });
             setAllDocs(result);
           });
+          // console.log(allDocs);
           // const allDocs = await getDocs(clientListRef);
           // allDocs.forEach((doc) => {
           //   result.push(doc.data());
@@ -55,7 +58,11 @@ export default function UserContextComp({ children }) {
 
           // userDoc = await getDoc(doc(db, "tailors", uid));
           // setUserDoc(userDoc.data());
-        } else setUser(null);
+        } else {
+          setUser(null);
+          setUserDoc(null);
+          setAllDocs(null);
+        }
       } catch (error) {
         console.error(error);
       } finally {

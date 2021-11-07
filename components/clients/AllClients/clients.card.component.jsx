@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import ClientsDetails from "./clients.details.card.component";
 import { useUser } from "../../../services/context/userContext";
+import ClientEditDetails from "./clients.edit.details.component";
 // import { getAllClients } from "../../../services/actions/getAllClients";
 
 const ClientsCard = ({ allDetails }) => {
-  const { image, fullName, phoneNo, gender } = allDetails;
+  const { image, fullName, phoneNo } = allDetails;
   // console.log(allDetails);
   let [isOpen, setIsOpen] = useState(false);
 
@@ -46,8 +47,8 @@ const ClientsCard = ({ allDetails }) => {
           isOpen={isOpen}
           closeModal={closeModal}
           allDetails={allDetails}
-          gender={gender}
         />
+        {/* <ClientEditDetails allDetails={allDetails} /> */}
       </div>
     </div>
   );

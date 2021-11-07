@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import ClientsCard from "./clients.card.component";
-const data = require("../../data/dummy-client.json");
+// const data = require("../../data/dummy-client.json");
 import { useRouter } from "next/router";
 import ClientSearch from "./client.search.component";
 import PaginationComp from "../../utils/pagination";
 import { useUser } from "../../../services/context/userContext";
 // import { db } from "../../../services/firebase/firebase";
 // import { useUser } from "../../../services/context/userContext";
-import { getAllClients } from "../../../services/actions/getAllClients";
+// import { getAllClients } from "../../../services/actions/getAllClients";
 const ClientsList = (props) => {
   const { allDocs } = useUser();
   // console.log(allDocs);

@@ -8,9 +8,10 @@ import ClientsWomenDetails from "./clients.women.details..component";
 const ClientsAllDetails = ({ allDetails }) => {
   // console.log(props);
   const { gender } = allDetails;
+  const headWidth = allDetails?.headWidth;
   return (
     <div className="">
-      {gender === "male" ? (
+      {gender === "male" || headWidth ? (
         <ClientsMenDetails allDetails={allDetails} />
       ) : (
         <ClientsWomenDetails allDetails={allDetails} />

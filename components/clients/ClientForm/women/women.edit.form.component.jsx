@@ -3,23 +3,24 @@ import React from "react";
 import { Disclosure } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/solid";
 
-const MenMeasuementForm = ({ handleChange, formValue }) => {
+const WomenEditMeasuementForm = ({ handleChange, formValue }) => {
   // const router = useRouter();
   // const handleSubmit = (e) => {
   //   e.preventDefault();
   //   router.push("/clients/success");
   //   console.log("final Data:", formValue);
   // };
-  // console.log(formValue);
   return (
     <div>
       <div className="bg-white py-6 sm:py-8 lg:py-12">
         <div className="">
-          <Disclosure>
+          <Disclosure as="div" className="mt-2">
             {({ open }) => (
               <>
                 <Disclosure.Button className="flex justify-between w-full px-4 py-2 text-sm font-medium text-left text-indigo-900 bg-indigo-100 rounded-lg hover:bg-indigo-200 focus:outline-none focus-visible:ring focus-visible:ring-indigo-500 focus-visible:ring-opacity-75">
-                  <span className="text-lg sm:text-xl font-bold">Shirt</span>
+                  <span className="text-lg sm:text-xl font-bold">
+                    Gown / Blouse
+                  </span>
                   <ChevronUpIcon
                     className={`${
                       open ? "transform rotate-180" : ""
@@ -30,36 +31,6 @@ const MenMeasuementForm = ({ handleChange, formValue }) => {
                   <form className="max-w-screen-lg grid sm:grid-cols-2 gap-4 mx-auto">
                     <div>
                       <label
-                        htmlFor="bodyLength"
-                        className="inline-block text-gray-800 text-sm sm:text-base mb-2"
-                      >
-                        Body Length
-                      </label>
-                      <input
-                        type="number"
-                        name="bodyLength"
-                        // value={formValue.bodyLength}
-                        onChange={(e) => handleChange(e)}
-                        className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="bodyWidth"
-                        className="inline-block text-gray-800 text-sm sm:text-base mb-2"
-                      >
-                        Body Width
-                      </label>
-                      <input
-                        type="number"
-                        name="bodyWidth"
-                        // value={formValue.bodyWidth}
-                        onChange={(e) => handleChange(e)}
-                        className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
-                      />
-                    </div>
-                    <div>
-                      <label
                         htmlFor="shoulderWidth"
                         className="inline-block text-gray-800 text-sm sm:text-base mb-2"
                       >
@@ -68,6 +39,36 @@ const MenMeasuementForm = ({ handleChange, formValue }) => {
                       <input
                         type="number"
                         name="shoulderWidth"
+                        // value={formValue.bodyLength}
+                        onChange={(e) => handleChange(e)}
+                        className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="bustAndBustPoint"
+                        className="inline-block text-gray-800 text-sm sm:text-base mb-2"
+                      >
+                        Bust / Bust Point
+                      </label>
+                      <input
+                        type="number"
+                        name="bustAndPoint"
+                        // value={formValue.bodyWidth}
+                        onChange={(e) => handleChange(e)}
+                        className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="underBustAndPoint"
+                        className="inline-block text-gray-800 text-sm sm:text-base mb-2"
+                      >
+                        Underbust / Underbust Point
+                      </label>
+                      <input
+                        type="number"
+                        name="underBustAndPoint"
                         // value={formValue.shoulderWidth}
                         onChange={(e) => handleChange(e)}
                         className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
@@ -75,14 +76,14 @@ const MenMeasuementForm = ({ handleChange, formValue }) => {
                     </div>
                     <div>
                       <label
-                        htmlFor="neckShortSleeve"
+                        htmlFor="naturalWaist"
                         className="inline-block text-gray-800 text-sm sm:text-base mb-2"
                       >
-                        Neck/Short Sleeve Length
+                        Natural Waist / True Waist
                       </label>
                       <input
                         type="number"
-                        name="neckShortSleeve"
+                        name="naturalWaist"
                         // value={formValue.neckShortSleeve}
                         onChange={(e) => handleChange(e)}
                         className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
@@ -90,60 +91,120 @@ const MenMeasuementForm = ({ handleChange, formValue }) => {
                     </div>
                     <div>
                       <label
-                        htmlFor="neckLongSleeve"
+                        htmlFor="hipMeasurement"
                         className="inline-block text-gray-800 text-sm sm:text-base mb-2"
                       >
-                        Neck/Long Sleeve Length
+                        Hip Measurement
                       </label>
                       <input
                         type="number"
-                        name="neckLongSleeve"
-                        // value={formValue.neckLongSleeve}
+                        name="hipMeasurement"
+                        // value={formValue.neckShortSleeve}
                         onChange={(e) => handleChange(e)}
                         className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
                       />
                     </div>
                     <div>
                       <label
-                        htmlFor="shirtSleeveLength"
+                        htmlFor="highestHipPoint"
                         className="inline-block text-gray-800 text-sm sm:text-base mb-2"
                       >
-                        Shirt Sleeve Length
+                        Highest Hip Point
                       </label>
                       <input
                         type="number"
-                        name="shirtSleeveLength"
-                        // value={formValue.sleeveLength}
+                        name="highestHipPoint"
+                        // value={formValue.neckShortSleeve}
                         onChange={(e) => handleChange(e)}
                         className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
                       />
                     </div>
                     <div>
                       <label
-                        htmlFor="neckWidth"
+                        htmlFor="frontLengthBodice"
                         className="inline-block text-gray-800 text-sm sm:text-base mb-2"
                       >
-                        Neck Width
+                        Front Length Bodice
                       </label>
                       <input
                         type="number"
-                        name="neckWidth"
-                        // value={formValue.neckWidth}
+                        name="frontLengthBodice"
+                        // value={formValue.neckShortSleeve}
                         onChange={(e) => handleChange(e)}
                         className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
                       />
                     </div>
                     <div>
                       <label
-                        htmlFor="shirtCuffWidth"
+                        htmlFor="backLengthBodice"
                         className="inline-block text-gray-800 text-sm sm:text-base mb-2"
                       >
-                        Shirt Cuffs Width
+                        Back Length Bodice
                       </label>
                       <input
                         type="number"
-                        name="shirtCuffWidth"
-                        // value={formValue.wristWidth}
+                        name="backLengthBodice"
+                        // value={formValue.neckShortSleeve}
+                        onChange={(e) => handleChange(e)}
+                        className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="fullLength"
+                        className="inline-block text-gray-800 text-sm sm:text-base mb-2"
+                      >
+                        Full Length
+                      </label>
+                      <input
+                        type="number"
+                        name="fullLength"
+                        // value={formValue.neckShortSleeve}
+                        onChange={(e) => handleChange(e)}
+                        className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="sleeveLength"
+                        className="inline-block text-gray-800 text-sm sm:text-base mb-2"
+                      >
+                        Sleeve Length
+                      </label>
+                      <input
+                        type="number"
+                        name="sleeveLength"
+                        // value={formValue.neckShortSleeve}
+                        onChange={(e) => handleChange(e)}
+                        className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="sleeveWidth"
+                        className="inline-block text-gray-800 text-sm sm:text-base mb-2"
+                      >
+                        Sleeve Width
+                      </label>
+                      <input
+                        type="number"
+                        name="sleeveWidth"
+                        // value={formValue.neckShortSleeve}
+                        onChange={(e) => handleChange(e)}
+                        className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="cuffWidth"
+                        className="inline-block text-gray-800 text-sm sm:text-base mb-2"
+                      >
+                        Cuff Width
+                      </label>
+                      <input
+                        type="number"
+                        name="cuffWidth"
+                        // value={formValue.neckShortSleeve}
                         onChange={(e) => handleChange(e)}
                         className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
                       />
@@ -153,7 +214,69 @@ const MenMeasuementForm = ({ handleChange, formValue }) => {
               </>
             )}
           </Disclosure>
-
+          <Disclosure as="div" className="mt-2">
+            {({ open }) => (
+              <>
+                <Disclosure.Button className="flex justify-between w-full px-4 py-2 text-sm font-medium text-left text-indigo-900 bg-indigo-100 rounded-lg hover:bg-indigo-200 focus:outline-none focus-visible:ring focus-visible:ring-indigo-500 focus-visible:ring-opacity-75">
+                  <span className="text-lg sm:text-xl font-bold">Skirt</span>
+                  <ChevronUpIcon
+                    className={`${
+                      open ? "transform rotate-180" : ""
+                    } w-5 h-5 text-indigo-500`}
+                  />
+                </Disclosure.Button>
+                <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-500">
+                  <form className="max-w-screen-lg grid sm:grid-cols-2 gap-4 mx-auto">
+                    <div>
+                      <label
+                        htmlFor="topLength"
+                        className="inline-block text-gray-800 text-sm sm:text-base mb-2"
+                      >
+                        Top Length
+                      </label>
+                      <input
+                        type="number"
+                        name="topLength"
+                        // value={formValue.bodyLength}
+                        onChange={(e) => handleChange(e)}
+                        className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="shortLength"
+                        className="inline-block text-gray-800 text-sm sm:text-base mb-2"
+                      >
+                        Short Length
+                      </label>
+                      <input
+                        type="number"
+                        name="shortLength"
+                        // value={formValue.bodyLength}
+                        onChange={(e) => handleChange(e)}
+                        className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="skirtLength"
+                        className="inline-block text-gray-800 text-sm sm:text-base mb-2"
+                      >
+                        Skirt Length
+                      </label>
+                      <input
+                        type="number"
+                        name="skirtLength"
+                        // value={formValue.bodyLength}
+                        onChange={(e) => handleChange(e)}
+                        className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
+                      />
+                    </div>
+                  </form>
+                </Disclosure.Panel>
+              </>
+            )}
+          </Disclosure>
           <Disclosure as="div" className="mt-2">
             {({ open }) => (
               <>
@@ -169,51 +292,6 @@ const MenMeasuementForm = ({ handleChange, formValue }) => {
                   <form className="max-w-screen-lg grid sm:grid-cols-2 gap-4 mx-auto">
                     <div>
                       <label
-                        htmlFor="legLength"
-                        className="inline-block text-gray-800 text-sm sm:text-base mb-2"
-                      >
-                        Leg Length / OutSeam
-                      </label>
-                      <input
-                        type="number"
-                        name="legLength"
-                        // value={formValue.bodyLength}
-                        onChange={(e) => handleChange(e)}
-                        className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="innerLength"
-                        className="inline-block text-gray-800 text-sm sm:text-base mb-2"
-                      >
-                        InSeam
-                      </label>
-                      <input
-                        type="number"
-                        name="innerLength"
-                        // value={formValue.bodyLength}
-                        onChange={(e) => handleChange(e)}
-                        className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="waistWidth"
-                        className="inline-block text-gray-800 text-sm sm:text-base mb-2"
-                      >
-                        Waist Width
-                      </label>
-                      <input
-                        type="number"
-                        name="waistWidth"
-                        // value={formValue.neckShortSleeve}
-                        onChange={(e) => handleChange(e)}
-                        className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
-                      />
-                    </div>
-                    <div>
-                      <label
                         htmlFor="thighWidth"
                         className="inline-block text-gray-800 text-sm sm:text-base mb-2"
                       >
@@ -222,133 +300,6 @@ const MenMeasuementForm = ({ handleChange, formValue }) => {
                       <input
                         type="number"
                         name="thighWidth"
-                        // value={formValue.bodyWidth}
-                        onChange={(e) => handleChange(e)}
-                        className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="seat"
-                        className="inline-block text-gray-800 text-sm sm:text-base mb-2"
-                      >
-                        Seat
-                      </label>
-                      <input
-                        type="number"
-                        name="seat"
-                        // value={formValue.bodyWidth}
-                        onChange={(e) => handleChange(e)}
-                        className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
-                      />
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="knee"
-                        className="inline-block text-gray-800 text-sm sm:text-base mb-2"
-                      >
-                        Knee Width
-                      </label>
-                      <input
-                        type="number"
-                        name="knee"
-                        // value={formValue.shoulderWidth}
-                        onChange={(e) => handleChange(e)}
-                        className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="rise"
-                        className="inline-block text-gray-800 text-sm sm:text-base mb-2"
-                      >
-                        Rise
-                      </label>
-                      <input
-                        type="number"
-                        name="rise"
-                        // value={formValue.shoulderWidth}
-                        onChange={(e) => handleChange(e)}
-                        className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="feetWidth"
-                        className="inline-block text-gray-800 text-sm sm:text-base mb-2"
-                      >
-                        Bottom/Feet Width
-                      </label>
-                      <input
-                        type="number"
-                        name="feetWidth"
-                        // value={formValue.shoulderWidth}
-                        onChange={(e) => handleChange(e)}
-                        className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
-                      />
-                    </div>
-                  </form>
-                </Disclosure.Panel>
-              </>
-            )}
-          </Disclosure>
-          <Disclosure as="div" className="mt-2">
-            {({ open }) => (
-              <>
-                <Disclosure.Button className="flex justify-between w-full px-4 py-2 text-sm font-medium text-left text-indigo-900 bg-indigo-100 rounded-lg hover:bg-indigo-200 focus:outline-none focus-visible:ring focus-visible:ring-indigo-500 focus-visible:ring-opacity-75">
-                  <span className="text-lg sm:text-xl font-bold">Cap</span>
-                  <ChevronUpIcon
-                    className={`${
-                      open ? "transform rotate-180" : ""
-                    } w-5 h-5 text-indigo-500`}
-                  />
-                </Disclosure.Button>
-                <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-500">
-                  <form className="max-w-screen-lg grid sm:grid-cols-2 gap-4 mx-auto">
-                    <div>
-                      <label
-                        htmlFor="headWidth"
-                        className="inline-block text-gray-800 text-sm sm:text-base mb-2"
-                      >
-                        Head Width
-                      </label>
-                      <input
-                        type="number"
-                        name="headWidth"
-                        // value={formValue.bodyLength}
-                        onChange={(e) => handleChange(e)}
-                        className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
-                      />
-                    </div>
-                  </form>
-                </Disclosure.Panel>
-              </>
-            )}
-          </Disclosure>
-          <Disclosure as="div" className="mt-2">
-            {({ open }) => (
-              <>
-                <Disclosure.Button className="flex justify-between w-full px-4 py-2 text-sm font-medium text-left text-indigo-900 bg-indigo-100 rounded-lg hover:bg-indigo-200 focus:outline-none focus-visible:ring focus-visible:ring-indigo-500 focus-visible:ring-opacity-75">
-                  <span className="text-lg sm:text-xl font-bold">Suits</span>
-                  <ChevronUpIcon
-                    className={`${
-                      open ? "transform rotate-180" : ""
-                    } w-5 h-5 text-indigo-500`}
-                  />
-                </Disclosure.Button>
-                <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-500">
-                  <form className="max-w-screen-lg grid sm:grid-cols-2 gap-4 mx-auto">
-                    <div>
-                      <label
-                        htmlFor="pointToPoint"
-                        className="inline-block text-gray-800 text-sm sm:text-base mb-2"
-                      >
-                        Point to Point (Shoulders)
-                      </label>
-                      <input
-                        type="number"
-                        name="pointToPoint"
                         // value={formValue.bodyLength}
                         onChange={(e) => handleChange(e)}
                         className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
@@ -356,14 +307,14 @@ const MenMeasuementForm = ({ handleChange, formValue }) => {
                     </div>
                     <div>
                       <label
-                        htmlFor="chest"
+                        htmlFor="inseamLength"
                         className="inline-block text-gray-800 text-sm sm:text-base mb-2"
                       >
-                        Chest
+                        inseam Length
                       </label>
                       <input
                         type="number"
-                        name="chest"
+                        name="inseamLength"
                         // value={formValue.bodyWidth}
                         onChange={(e) => handleChange(e)}
                         className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
@@ -371,75 +322,15 @@ const MenMeasuementForm = ({ handleChange, formValue }) => {
                     </div>
                     <div>
                       <label
-                        htmlFor="halfBackLength"
+                        htmlFor="outseamLength"
                         className="inline-block text-gray-800 text-sm sm:text-base mb-2"
                       >
-                        Half Back Length
+                        Outseam Length
                       </label>
                       <input
                         type="number"
-                        name="halfBackLength"
+                        name="outseamLength"
                         // value={formValue.shoulderWidth}
-                        onChange={(e) => handleChange(e)}
-                        className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="waistStomachWidth"
-                        className="inline-block text-gray-800 text-sm sm:text-base mb-2"
-                      >
-                        Suit Waist / Stomach
-                      </label>
-                      <input
-                        type="number"
-                        name="waistStomachWidth"
-                        // value={formValue.neckShortSleeve}
-                        onChange={(e) => handleChange(e)}
-                        className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="suitLength"
-                        className="inline-block text-gray-800 text-sm sm:text-base mb-2"
-                      >
-                        Suit Length
-                      </label>
-                      <input
-                        type="number"
-                        name="suitLength"
-                        // value={formValue.neckLongSleeve}
-                        onChange={(e) => handleChange(e)}
-                        className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="suitSleeveLength"
-                        className="inline-block text-gray-800 text-sm sm:text-base mb-2"
-                      >
-                        Suit Sleeve Length
-                      </label>
-                      <input
-                        type="number"
-                        name="suitSleeveLength"
-                        // value={formValue.sleeveLength}
-                        onChange={(e) => handleChange(e)}
-                        className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="suitCuffsWidth"
-                        className="inline-block text-gray-800 text-sm sm:text-base mb-2"
-                      >
-                        Suit Cuffs Width
-                      </label>
-                      <input
-                        type="number"
-                        name="suitCuffsWidth"
-                        // value={formValue.neckWidth}
                         onChange={(e) => handleChange(e)}
                         className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
                       />
@@ -455,4 +346,4 @@ const MenMeasuementForm = ({ handleChange, formValue }) => {
   );
 };
 
-export default MenMeasuementForm;
+export default WomenEditMeasuementForm;

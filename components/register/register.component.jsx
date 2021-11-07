@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { auth } from "../../services/firebase/firebase";
 // import { createUserWithEmailAndPassword } from "firebase/auth";
-import { setNewTailor } from "../../services/actions/setNewTailor";
+import { SetNewTailor } from "../../services/actions/setNewTailor";
 
 const RegisterComponent = () => {
   const [formValue, setFormValue] = useState({});
@@ -20,7 +20,7 @@ const RegisterComponent = () => {
     e.preventDefault();
 
     // console.log(res);
-    await setNewTailor(formValue);
+    await SetNewTailor(formValue);
     // router.push("/clients");
     // router.back();
   };

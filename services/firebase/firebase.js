@@ -30,19 +30,21 @@ const firebaseConfig = {
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 // const analytics = getAnalytics(app);
 const db = getFirestore(app);
-enableIndexedDbPersistence(db).catch((err) => {
-  if (err.code == "failed-precondition") {
-    // Multiple tabs open, persistence can only be enabled
-    // in one tab at a a time.
-    // ...
-    console.error("failed precondition");
-  } else if (err.code == "unimplemented") {
-    // The current browser does not support all of the
-    // features required to enable persistence
-    // ...
-    console.error("unimplemented");
-  }
-});
+if (process.browser) {
+  enableIndexedDbPersistence(db).catch((err) => {
+    if (err.code == "failed-precondition") {
+      // Multiple tabs open, persistence can only be enabled
+      // in one tab at a a time.
+      // ...
+      console.error("failed precondition");
+    } else if (err.code == "unimplemented") {
+      // The current browser does not support all of the
+      // features required to enable persistence
+      // ...
+      console.error("unimplemented");
+    }
+  });
+}
 const auth = getAuth(app);
 const storage = getStorage(app);
 

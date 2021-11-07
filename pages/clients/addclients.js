@@ -4,8 +4,10 @@ import Layout from "../../components/layout/layout";
 import { useRouter } from "next/router";
 import MenMeasuementForm from "../../components/clients/ClientForm/men/men.form.component";
 import WomenMeasuementForm from "../../components/clients/ClientForm/women/women.form.component";
-import { setNewClient } from "../../services/actions/setNewClient";
+import { SetNewClient } from "../../services/actions/setNewClient";
 import { useUser } from "../../services/context/userContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -36,10 +38,19 @@ export default function AddNewClient() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await setNewClient(formValue, userDoc, user);
-    router.push("/clients/success");
+    // toast.error("Wow so easy!");
+    // console.log(formValue?.gender.length);
+    if (!formValue.gender || formValue?.gender.length === 0) {
+      // console.log("stop send");
+      toast.error("💥 Please select a gender! 💥");
+    }
+    if (formValue?.gender && formValue?.gender.length !== 0) {
+      // console.log("send file");
+      await SetNewClient(formValue, userDoc, user);
+      router.push("/clients/success");
 
-    // console.log("final Data:", formValue);
+      // console.log("final Data:", formValue);
+    }
   };
   // console.log(formValue);
   return (
@@ -286,6 +297,7 @@ export default function AddNewClient() {
             </Tab.Group>
           </div>
         </div>
+        <ToastContainer />
       </Layout>
     </div>
   );

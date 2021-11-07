@@ -1,11 +1,55 @@
-<a
-  href="#_"
-  className="relative inline-flex items-center justify-center p-4 px-5 py-3 overflow-hidden font-medium text-indigo-600 rounded-lg shadow-2xl group"
->
-  <span className="absolute top-0 left-0 w-40 h-40 -mt-10 -ml-3 transition-all duration-700 bg-red-500 rounded-full blur-md ease"></span>
-  <span className="absolute inset-0 w-full h-full transition duration-700 group-hover:rotate-180 ease">
-    <span className="absolute bottom-0 left-0 w-24 h-24 -ml-10 bg-purple-500 rounded-full blur-md"></span>
-    <span className="absolute bottom-0 right-0 w-24 h-24 -mr-10 bg-pink-500 rounded-full blur-md"></span>
-  </span>
-  <span className="relative text-white">Add New Clients</span>
-</a>;
+<div className="my-4">
+  <div className="h-56  w-full bg-gray-50 flex justify-center items-center">
+    <div className="h-56 w-72 absolute flex justify-center items-center">
+      <img
+        className="object-cover h-20 w-20 md:h-40 md:w-40 rounded-full"
+        src="https://images.unsplash.com/photo-1484608856193-968d2be4080e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80"
+        alt={`firstName`}
+        loading="lazy"
+      />
+    </div>
+
+    <div
+      className="
+          h-full
+          mx-4
+          w-5/6
+          bg-blue-400
+          rounded-3xl
+          shadow-md
+          sm:w-80 sm:mx-0
+        "
+    >
+      <div className="h-1/2 w-full flex justify-between items-baseline px-3 py-5">
+        <h1 className="text-white">Profile</h1>
+      </div>
+
+      <div
+        className="
+            bg-white
+            h-1/2
+            w-full
+            rounded-3xl
+            flex flex-col
+            justify-around
+            items-center
+          "
+      >
+        <div className="w-full h-full flex justify-between items-center px-3 pt-2">
+          <div className="flex flex-col justify-center items-center">
+            <h1 className="text-gray-500 text-xs">Orders</h1>
+            <h1 className="text-gray-600 text-sm">340</h1>
+          </div>
+          <div className="flex flex-col justify-center items-center">
+            <h1 className="text-gray-500 text-xs">Spent</h1>
+            <h1 className="text-gray-600 text-sm">$2,004</h1>
+          </div>
+        </div>
+        <div className="w-full h-1/2 flex flex-col justify-center items-center">
+          <h1 className="text-gray-700 font-bold">Maria R.</h1>
+          <h1 className="text-gray-500 text-sm">New York, USA</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>;

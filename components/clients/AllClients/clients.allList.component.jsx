@@ -5,7 +5,7 @@ import NoClientsList from "./clients.noList.components";
 
 const ClientsAllListComponent = () => {
   const { userDoc } = useUser();
-  console.log(userDoc);
+  // console.log(userDoc);
   return (
     <div>
       {userDoc?.clientsCount === 0 ? <NoClientsList /> : <ClientsList />}

@@ -9,6 +9,7 @@ const Layout = ({ children, name, desc }) => {
     <div>
       <Head>
         <title>Tailors DB - {name}</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="description" content={desc} />
         <link rel="icon" href="/logo/tailorlogo2.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -19,7 +20,7 @@ const Layout = ({ children, name, desc }) => {
         />
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&family=Arvo:wght@400;700&family=Catamaran:wght@400;500;600;700;800;900&family=Josefin+Sans:wght@400;500;600;700&family=Merriweather+Sans:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800;900&family=Oswald:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800;900&family=Source+Sans+Pro:wght@400;600;700;900&family=Stardos+Stencil:wght@400;700&display=swap"
         />
       </Head>
       <NavHeader />
