@@ -34,7 +34,7 @@ const TailorsProfileComponent = ({ userDoc }) => {
   return (
     <div className="">
       <div className="">
-        <div class="max-w-screen-xl mx-auto my-5 p-5">
+        <div className="max-w-screen-xl mx-auto my-5 p-5">
           <div className="m-5 text-center">
             <span className="text-4xl font-black text-gray-400">Your </span>{" "}
             <span className="text-4xl font-black text-indigo-500 ">
@@ -56,7 +56,7 @@ const TailorsProfileComponent = ({ userDoc }) => {
               {/* <!-- About Section --> */}
               <div className="bg-white p-3 border-t-4 border-indigo-400 rounded-lg shadow-md">
                 <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
-                  <span clas="text-green-500">
+                  <span className="text-gray-500">
                     <svg
                       className="h-5"
                       xmlns="http://www.w3.org/2000/svg"

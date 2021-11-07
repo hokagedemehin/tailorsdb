@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-import { auth } from "../../services/firebase/firebase";
+// import { auth } from "../../services/firebase/firebase";
 // import { createUserWithEmailAndPassword } from "firebase/auth";
 import { SetNewTailor } from "../../services/actions/setNewTailor";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const RegisterComponent = () => {
   const [formValue, setFormValue] = useState({});
@@ -113,14 +115,14 @@ const RegisterComponent = () => {
                   Register
                 </button>
 
-                <div className="flex justify-center items-center relative">
+                {/* <div className="flex justify-center items-center relative">
                   <span className="h-px bg-gray-300 absolute inset-x-0"></span>
                   <span className="bg-white text-gray-400 text-sm relative px-4">
                     Register with social
                   </span>
-                </div>
+                </div> */}
 
-                <button className="flex justify-center items-center bg-blue-500 hover:bg-blue-600 active:bg-blue-700 focus-visible:ring ring-blue-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 gap-2 px-8 py-3">
+                {/* <button className="flex justify-center items-center bg-blue-500 hover:bg-blue-600 active:bg-blue-700 focus-visible:ring ring-blue-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 gap-2 px-8 py-3">
                   <svg
                     className="w-5 h-5 flex-shrink-0"
                     width="24"
@@ -135,9 +137,9 @@ const RegisterComponent = () => {
                     />
                   </svg>
                   Continue with Facebook
-                </button>
+                </button> */}
 
-                <button className="flex justify-center items-center bg-white hover:bg-gray-100 active:bg-gray-200 border border-gray-300 focus-visible:ring ring-gray-300 text-gray-800 text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 gap-2 px-8 py-3">
+                {/* <button className="flex justify-center items-center bg-white hover:bg-gray-100 active:bg-gray-200 border border-gray-300 focus-visible:ring ring-gray-300 text-gray-800 text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 gap-2 px-8 py-3">
                   <svg
                     className="w-5 h-5 flex-shrink-0"
                     width="24"
@@ -164,7 +166,7 @@ const RegisterComponent = () => {
                     />
                   </svg>
                   Continue with Google
-                </button>
+                </button> */}
               </div>
 
               <div className="flex justify-center items-center bg-gray-100 p-4">
@@ -180,6 +182,7 @@ const RegisterComponent = () => {
                 </p>
               </div>
             </form>
+            <ToastContainer />
           </div>
         </div>
       </div>

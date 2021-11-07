@@ -35,7 +35,7 @@ const FooterNav = () => {
               {/* <!-- logo - end --> */}
 
               <p className="text-gray-400 sm:pr-8 mb-6 text-xs">
-                Get all the services that you need in one place
+                Safe & secure way to store your clients measurements forever
               </p>
 
               {/* <!-- social - start --> */}
@@ -88,23 +88,23 @@ const FooterNav = () => {
                   </a>
                 </div>
 
-                <div>
+                {/* <div>
                   <a
                     href="#"
                     className="text-gray-400 hover:text-indigo-500 active:text-indigo-600 transition duration-100"
                   >
                     Pricing
                   </a>
-                </div>
+                </div> */}
 
-                <div>
+                {/* <div>
                   <a
                     href="#"
                     className="text-gray-400 hover:text-indigo-500 active:text-indigo-600 transition duration-100"
                   >
                     Customers
                   </a>
-                </div>
+                </div> */}
               </nav>
             </div>
             {/* <!-- nav - end --> */}
@@ -125,32 +125,32 @@ const FooterNav = () => {
                   </a>
                 </div>
 
-                <div>
+                {/* <div>
                   <a
                     href="#"
                     className="text-gray-400 hover:text-indigo-500 active:text-indigo-600 transition duration-100"
                   >
                     Investor Relations
                   </a>
-                </div>
+                </div> */}
 
-                <div>
+                {/* <div>
                   <a
                     href="#"
                     className="text-gray-400 hover:text-indigo-500 active:text-indigo-600 transition duration-100"
                   >
                     Jobs
                   </a>
-                </div>
+                </div> */}
 
-                <div>
+                {/* <div>
                   <a
                     href="#"
                     className="text-gray-400 hover:text-indigo-500 active:text-indigo-600 transition duration-100"
                   >
                     Press
                   </a>
-                </div>
+                </div> */}
 
                 <div>
                   <a
@@ -180,14 +180,14 @@ const FooterNav = () => {
                   </a>
                 </div>
 
-                <div>
+                {/* <div>
                   <a
                     href="#"
                     className="text-gray-400 hover:text-indigo-500 active:text-indigo-600 transition duration-100"
                   >
                     Documentation
                   </a>
-                </div>
+                </div> */}
 
                 <div>
                   <a

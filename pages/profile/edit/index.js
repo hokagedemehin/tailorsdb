@@ -4,9 +4,9 @@ import { useRouter } from "next/router";
 import { useUser } from "../../../services/context/userContext";
 import TailorsEditProfileComponent from "../../../components/tailors/tailors.profile.edit.component";
 
-const ProfilePage = () => {
+const EditProfilePage = () => {
   const router = useRouter();
-  const { user } = useUser();
+  const { user, userDoc } = useUser();
   // console.log(user);
   useEffect(() => {
     if (!user) {
@@ -19,9 +19,9 @@ const ProfilePage = () => {
       name="Edit Profile Page"
       desc="Every Tailor Profile details can be eddited here"
     >
-      <TailorsEditProfileComponent user={user} />
+      <TailorsEditProfileComponent user={user} userDoc={userDoc} />
     </Layout>
   );
 };
 
-export default ProfilePage;
+export default EditProfilePage;

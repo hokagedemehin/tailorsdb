@@ -9,6 +9,8 @@ import { useUser } from "../../../services/context/userContext";
 import MenEditMeasuementForm from "../ClientForm/men/men.edit.form.component";
 import WomenEditMeasuementForm from "../ClientForm/women/women.edit.form.component";
 import { SetEditClient } from "../../../services/actions/setEditClient";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ClientEditDetails = ({ clientDoc }) => {
   const [formValue, setFormValue] = useState({});
@@ -47,10 +49,21 @@ const ClientEditDetails = ({ clientDoc }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await SetEditClient(formValue, userDoc);
-    router.push("/clients");
+    if (!formValue.gender || formValue?.gender.length === 0) {
+      // console.log("stop send");
+      toast.error("💥 Please select a gender! 💥");
+    }
+    if (formValue?.gender && formValue?.gender.length !== 0) {
+      // console.log("send file");
+      await SetEditClient(formValue, userDoc, user);
+      router.push("/clients");
 
-    console.log("final Data:", formValue);
+      // console.log("final Data:", formValue);
+    }
+    // await SetEditClient(formValue, userDoc);
+    // router.push("/clients");
+
+    // console.log("final Data:", formValue);
   };
 
   return (
@@ -237,90 +250,7 @@ const ClientEditDetails = ({ clientDoc }) => {
         </div>
       </div>
 
-      {/* <div className="tabs_Selcted">
-        <div className="w-full max-w-screen-lg mx-auto py-8 px-4 md:px-8">
-          <Tab.Group>
-            <Tab.List className="flex p-1 space-x-1 bg-blue-900/20 rounded-xl">
-              <Tab
-                className={({ selected }) =>
-                  classNames(
-                    "w-full py-2.5 text-sm leading-5 font-medium text-blue-700 rounded-lg",
-                    "focus:outline-none focus:ring-2 ring-offset-2 ring-offset-blue-400 ring-white ring-opacity-60",
-                    selected
-                      ? "bg-white shadow"
-                      : "text-gray-600 hover:bg-white/[0.12] hover:text-white"
-                  )
-                }
-              >
-                Men
-              </Tab>
-              <Tab
-                className={({ selected }) =>
-                  classNames(
-                    "w-full py-2.5 text-sm leading-5 font-medium text-blue-700 rounded-lg",
-                    "focus:outline-none focus:ring-2 ring-offset-2 ring-offset-blue-400 ring-white ring-opacity-60",
-                    selected
-                      ? "bg-white shadow"
-                      : "text-gray-600 hover:bg-white/[0.12] hover:text-white"
-                  )
-                }
-              >
-                Women
-              </Tab>
-            </Tab.List>
-            <Tab.Panels className="mt-2">
-              <Tab.Panel
-                className={classNames(
-                  "bg-white rounded-xl p-1",
-                  "focus:outline-none focus:ring-2 ring-offset-2 ring-offset-blue-50 ring-white ring-opacity-60"
-                )}
-              >
-                <div className="male-form max-w-screen-lg px-4 md:px-8 mx-auto">
-                  <MenMeasuementForm
-                    handleChange={handleChange}
-                    handleFileUpload={handleFileUpload}
-                    // formValue={formValue}
-                  />
-                  <div className="flex">
-                    <div className="sm:col-span-2 flex justify-between items-center">
-                      <button
-                        onClick={(e) => handleSubmit(e)}
-                        className="inline-block bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700 focus-visible:ring ring-indigo-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3"
-                      >
-                        Save
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </Tab.Panel>
-              <Tab.Panel
-                className={classNames(
-                  "bg-white rounded-xl p-1",
-                  "focus:outline-none focus:ring-2 ring-offset-2 ring-offset-blue-50 ring-white ring-opacity-60"
-                )}
-              >
-                <div className="women-form max-w-screen-lg px-4 md:px-8 mx-auto">
-                  <WomenMeasuementForm
-                    handleChange={handleChange}
-                    handleFileUpload={handleFileUpload}
-                    // formValue={formValue}
-                  />
-                  <div className="flex">
-                    <div className="sm:col-span-2 flex justify-between items-center">
-                      <button
-                        onClick={(e) => handleSubmit(e)}
-                        className="inline-block bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700 focus-visible:ring ring-indigo-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3"
-                      >
-                        Save
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </Tab.Panel>
-            </Tab.Panels>
-          </Tab.Group>
-        </div>
-      </div> */}
+      <ToastContainer />
     </div>
   );
 };

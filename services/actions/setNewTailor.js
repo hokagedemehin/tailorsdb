@@ -2,6 +2,8 @@ import { auth, db } from "../firebase/firebase";
 // import { useUser } from "../context/userContext";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const SetNewTailor = async (formValue) => {
   // const email1 = formValue.email;
@@ -31,13 +33,14 @@ export const SetNewTailor = async (formValue) => {
         email: email,
         clients: [],
         clientsCount: 0,
-        image="https://avatars.dicebear.com/api/micah/:child.svg?mouth[]=laughing&mouth[]=smile&glassesProbability=100",
+        image:
+          "https://avatars.dicebear.com/api/micah/:child.svg?mouth[]=laughing&mouth[]=smile&glassesProbability=100",
         createdTimestamp: serverTimestamp(),
-
       },
       { merge: true }
     );
   } catch (error) {
     console.error(error);
+    toast.error("💥Something is wrong 😪😥💥");
   }
 };

@@ -1,8 +1,19 @@
 import React, { useState } from "react";
+import TailorsImageCard from "./tailors.image.card.component";
+import { useRouter } from "next/router";
+import { EditTailorProfile } from "../../services/actions/editTailorProfile";
 
 const TailorsEditProfileComponent = ({ userDoc, user }) => {
-  const { firstName, lastName, image } = !userDoc ? {} : userDoc;
-  const [formValue, setFormValue] = useState({});
+  // console.log(userDoc);
+  // const { firstName, lastName, image } = !userDoc ? {} : userDoc;
+  const [formValue, setFormValue] = useState(userDoc);
+  console.log("formValu: ", formValue);
+  const router = useRouter();
+  const handleClick = (e, href) => {
+    e.preventDefault();
+    router.push(href);
+    // console.log("router: ", router.pathname);
+  };
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -12,15 +23,16 @@ const TailorsEditProfileComponent = ({ userDoc, user }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await EditTaiorProfile(formValue, userDoc, user);
+    await EditTailorProfile(formValue, user);
+    router.push("/profile");
   };
 
   return (
     <div className="">
       <div className="">
-        <div class="max-w-screen-xl mx-auto my-5 p-5">
+        <div className="max-w-screen-xl mx-auto my-5 p-5">
           <div className="m-5 text-center">
-            <span className="text-4xl font-black text-gray-400">Your </span>{" "}
+            <span className="text-4xl font-black text-gray-400">Edit </span>{" "}
             <span className="text-4xl font-black text-indigo-500 ">
               {" "}
               Profile
@@ -30,22 +42,7 @@ const TailorsEditProfileComponent = ({ userDoc, user }) => {
             {/* <!-- Left Side --> */}
             <div className="w-full md:w-3/12 md:mx-2">
               {/* <!-- Profile Card --> */}
-              <div className="bg-white p-3 border-t-4 border-indigo-400 rounded-lg shadow-md">
-                <div className="image overflow-hidden">
-                  <img
-                    className="h-auto w-full mx-auto"
-                    src={image}
-                    alt=""
-                    loading="lazy"
-                  />
-                </div>
-                <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">
-                  {`${firstName} ${lastName}`}
-                </h1>
-                <h3 className="text-gray-600 font-lg text-semibold leading-6">
-                  Joined Nov 6 2021
-                </h3>
-              </div>
+              <TailorsImageCard userDoc={userDoc} />
               {/* <!-- End of profile card --> */}
               <div className="my-4"></div>
             </div>
@@ -55,7 +52,7 @@ const TailorsEditProfileComponent = ({ userDoc, user }) => {
               {/* <!-- About Section --> */}
               <div className="bg-white p-3 border-t-4 border-indigo-400 rounded-lg shadow-md">
                 <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
-                  <span clas="text-green-500">
+                  <span className="text-gray-500">
                     <svg
                       className="h-5"
                       xmlns="http://www.w3.org/2000/svg"
@@ -86,7 +83,7 @@ const TailorsEditProfileComponent = ({ userDoc, user }) => {
                         type="text"
                         name="firstName"
                         // required="required"
-                        // value={formValue?.fullName}
+                        value={!formValue ? "" : formValue?.firstName}
                         onChange={(e) => handleChange(e)}
                         className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
                       />
@@ -102,7 +99,7 @@ const TailorsEditProfileComponent = ({ userDoc, user }) => {
                         type="text"
                         name="lastName"
                         // required="required"
-                        // value={formValue?.fullName}
+                        value={!formValue ? "" : formValue?.lastName}
                         onChange={(e) => handleChange(e)}
                         className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
                       />
@@ -119,7 +116,7 @@ const TailorsEditProfileComponent = ({ userDoc, user }) => {
                         type="tel"
                         name="phoneNo"
                         onChange={(e) => handleChange(e)}
-                        // value={formValue?.PhoneNo}
+                        value={!formValue ? "" : formValue?.phoneNo}
                         className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
                       />
                     </div>
@@ -135,7 +132,7 @@ const TailorsEditProfileComponent = ({ userDoc, user }) => {
                         name="birthDay"
                         type="date"
                         onChange={(e) => handleChange(e)}
-                        // value={formValue.birthDay}
+                        value={!formValue ? "" : formValue.birthDay}
                         className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
                       />
                     </div>
@@ -187,8 +184,17 @@ const TailorsEditProfileComponent = ({ userDoc, user }) => {
                     </div>
                   </div>
                 </div>
-                <button className="block w-full transform transition duration-200 ease-in  text-indigo-800 text-base font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4 ring-1">
+                <button
+                  onClick={(e) => handleSubmit(e)}
+                  className="block w-full transform transition duration-200 ease-in  text-indigo-800 text-base font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4 ring-1"
+                >
                   Submit
+                </button>
+                <button
+                  onClick={(e) => handleClick(e, "/profile")}
+                  className="block w-full transform transition duration-200 ease-in  text-indigo-800 text-base font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4 ring-1"
+                >
+                  Back
                 </button>
               </div>
               {/* <!-- End of about section --> */}

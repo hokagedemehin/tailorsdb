@@ -1,6 +1,14 @@
 import React from "react";
+import { useRouter } from "next/router";
 
 const CallToActionComponent = () => {
+  const router = useRouter();
+  const handleClick = (e, href) => {
+    e.preventDefault();
+    router.push(href);
+    // console.log("router: ", router.pathname);
+  };
+
   return (
     <div>
       <div className="bg-white py-6 sm:py-8 lg:py-12">
@@ -37,6 +45,7 @@ const CallToActionComponent = () => {
                 </a> */}
                 <a
                   href="#_"
+                  onClick={(e) => handleClick(e, "/register")}
                   className="relative inline-flex items-center justify-center p-4 px-8 py-3 overflow-hidden font-medium text-indigo-600 rounded-lg shadow-2xl group"
                 >
                   <span className="absolute top-0 left-0 w-40 h-40 -mt-10 -ml-3 transition-all duration-700 bg-red-500 rounded-full blur-md ease"></span>

@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import moment from "moment";
 
 const TailorsImageCard = ({ userDoc }) => {
+  const [profile, setProfile] = useState({});
+  useEffect(() => {
+    if (userDoc) {
+      setProfile(userDoc);
+    }
+  }, []);
+  // console.log(userDoc);
   const { firstName, lastName, image, createdTimestamp } = !userDoc
     ? {}
     : userDoc;

@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import {
   signInWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithRedirect,
+  // GoogleAuthProvider,
+  // signInWithRedirect,
 } from "firebase/auth";
 import { auth } from "../../services/firebase/firebase";
 import { useRouter } from "next/router";
 import { useUser } from "../../services/context/userContext";
 import { SetNewGoogleTailor } from "../../services/actions/setGoogleTailor";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+// import { SetResetPassword } from "../../services/actions/setResetPassword";
+
 const LoginComponent = () => {
   const [formValue, setFormValue] = useState({});
   const { user } = useUser();
@@ -25,7 +29,12 @@ const LoginComponent = () => {
     e.preventDefault();
     const email = formValue.email;
     const password = formValue.password;
-    await signInWithEmailAndPassword(auth, email, password);
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+      toast.error("💥Incorrect Email or Password! 😪😥💥");
+      // console.error(error.message, "error is caught");
+    }
     // console.log(res);
     // router.push("/clients");
     // router.back();
@@ -36,9 +45,14 @@ const LoginComponent = () => {
     await SetNewGoogleTailor();
   };
 
-  const handleClick = (e) => {
+  // const handleReset = async (e) => {
+  //   e.preventDefault();
+  //   await SetResetPassword(e, user);
+  // };
+
+  const handleClick = (e, href) => {
     e.preventDefault();
-    router.push("/register");
+    router.push(href);
     // console.log("final Data:", formValue);
   };
 
@@ -90,14 +104,14 @@ const LoginComponent = () => {
                   Log in
                 </button>
 
-                <div className="flex justify-center items-center relative">
+                {/* <div className="flex justify-center items-center relative">
                   <span className="h-px bg-gray-300 absolute inset-x-0"></span>
                   <span className="bg-white text-gray-400 text-sm relative px-4">
                     Log in with social
                   </span>
-                </div>
+                </div> */}
 
-                <button className="flex justify-center items-center bg-blue-500 hover:bg-blue-600 active:bg-blue-700 focus-visible:ring ring-blue-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 gap-2 px-8 py-3">
+                {/* <button className="flex justify-center items-center bg-blue-500 hover:bg-blue-600 active:bg-blue-700 focus-visible:ring ring-blue-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 gap-2 px-8 py-3">
                   <svg
                     className="w-5 h-5 flex-shrink-0"
                     width="24"
@@ -112,9 +126,9 @@ const LoginComponent = () => {
                     />
                   </svg>
                   Continue with Facebook
-                </button>
+                </button> */}
 
-                <button
+                {/* <button
                   onClick={(e) => googleSignin(e)}
                   className="flex justify-center items-center bg-white hover:bg-gray-100 active:bg-gray-200 border border-gray-300 focus-visible:ring ring-gray-300 text-gray-800 text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 gap-2 px-8 py-3"
                 >
@@ -144,22 +158,33 @@ const LoginComponent = () => {
                     />
                   </svg>
                   Continue with Google
-                </button>
+                </button> */}
               </div>
 
-              <div className="flex justify-center items-center bg-gray-100 p-4">
+              <div className="flex flex-col space-y-2 justify-center items-center bg-gray-100 p-4">
                 <p className="text-gray-500 text-sm text-center">
                   Don't have an account?{" "}
                   <a
                     href="!#"
-                    onClick={(e) => handleClick(e)}
+                    onClick={(e) => handleClick(e, "/register")}
                     className="text-indigo-500 hover:text-indigo-600 active:text-indigo-700 transition duration-100"
                   >
                     Register
                   </a>
                 </p>
+                <p className="text-gray-500 text-sm text-center">
+                  Forgot Password?{" "}
+                  <a
+                    href="!#"
+                    onClick={(e) => handleClick(e, "/reset")}
+                    className="text-indigo-500 hover:text-indigo-600 active:text-indigo-700 transition duration-100"
+                  >
+                    Reset
+                  </a>
+                </p>
               </div>
             </form>
+            <ToastContainer />
           </div>
         </div>
       </div>
