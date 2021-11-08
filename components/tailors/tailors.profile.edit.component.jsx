@@ -11,7 +11,7 @@ const TailorsEditProfileComponent = ({ userDoc, user }) => {
   // const { firstName, lastName, image } = !userDoc ? {} : userDoc;
   const [formValue, setFormValue] = useState(userDoc);
   const [imgValue, setImgValue] = useState(null);
-  console.log("formValu: ", formValue);
+  // console.log("formValu: ", formValue);
   const router = useRouter();
   const handleClick = (e, href) => {
     e.preventDefault();

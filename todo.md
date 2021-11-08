@@ -10,10 +10,12 @@
 - [x] Edit client measurements page
 - [ ] Social Login flow
 - [x] Reset password workflow
-- [ ] firebase image upload for new clients
+- [x] firebase image upload for new clients
 - [x] Firebase image upload for tailors profile
-- [ ] firebase storages folder structure
+- [x] firebase storages folder structure
 - [x] Footer Links
 - [ ] firebase security rules
 - [x] call to action component button
 - [ ] activate image compression extension
+- [ ] About page
+- [ ] nodemail react to send email notification

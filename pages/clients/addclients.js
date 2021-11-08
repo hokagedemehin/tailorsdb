@@ -8,6 +8,7 @@ import { SetNewClient } from "../../services/actions/setNewClient";
 import { useUser } from "../../services/context/userContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { SetImageClient } from "../../services/actions/setImageClient";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -15,6 +16,8 @@ function classNames(...classes) {
 
 export default function AddNewClient() {
   const [formValue, setFormValue] = useState({});
+  const [imgValue, setImgValue] = useState({});
+  const [newDocID, setNewDocID] = useState(null);
   const { userDoc, user } = useUser();
   const router = useRouter();
 
@@ -27,7 +30,8 @@ export default function AddNewClient() {
   const handleFileUpload = (e) => {
     const name = e.target.name;
     const value = e.target.files[0];
-    setFormValue({ ...formValue, [name]: value });
+    // setFormValue({ ...formValue, [name]: value });
+    setImgValue({ ...imgValue, [name]: value });
   };
 
   const handleChange = (e) => {
@@ -38,15 +42,20 @@ export default function AddNewClient() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // toast.error("Wow so easy!");
-    // console.log(formValue?.gender.length);
+
     if (!formValue.gender || formValue?.gender.length === 0) {
       // console.log("stop send");
       toast.error("💥 Please select a gender! 💥");
     }
     if (formValue?.gender && formValue?.gender.length !== 0) {
       // console.log("send file");
-      await SetNewClient(formValue, userDoc, user);
+      await SetNewClient(formValue, userDoc, user, imgValue);
+      // if (imgValue?.photo) {
+      //   console.log(formValue);
+      //   // console.log(imgValue);
+      //   await SetImageClient(imgValue, formValue, user);
+      //   // EditImageTailorProfile(imgValue, user);
+      // }
       router.push("/clients/success");
 
       // console.log("final Data:", formValue);

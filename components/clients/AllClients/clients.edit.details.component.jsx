@@ -11,13 +11,16 @@ import WomenEditMeasuementForm from "../ClientForm/women/women.edit.form.compone
 import { SetEditClient } from "../../../services/actions/setEditClient";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { SetImageClient } from "../../../services/actions/setImageClient";
 
 const ClientEditDetails = ({ clientDoc }) => {
   const [formValue, setFormValue] = useState({});
+  const [imgValue, setImgValue] = useState({});
+
   const { userDoc, user } = useUser();
   const router = useRouter();
   // console.log("clients: ", clientDoc);
-  // console.log("formValue", formValue);
+  console.log("formValue", formValue);
 
   // useEffect(() => {
 
@@ -38,7 +41,8 @@ const ClientEditDetails = ({ clientDoc }) => {
   const handleFileUpload = (e) => {
     const name = e.target.name;
     const value = e.target.files[0];
-    setFormValue({ ...formValue, [name]: value });
+    // setFormValue({ ...formValue, [name]: value });
+    setImgValue({ ...imgValue, [name]: value });
   };
 
   const handleChange = (e) => {
@@ -56,6 +60,10 @@ const ClientEditDetails = ({ clientDoc }) => {
     if (formValue?.gender && formValue?.gender.length !== 0) {
       // console.log("send file");
       await SetEditClient(formValue, userDoc, user);
+      if (imgValue?.photo) {
+        await SetImageClient(imgValue, formValue, user);
+        // EditImageTailorProfile(imgValue, user);
+      }
       router.push("/clients");
 
       // console.log("final Data:", formValue);
@@ -97,9 +105,7 @@ const ClientEditDetails = ({ clientDoc }) => {
                   type="text"
                   name="fullName"
                   // required="required"
-                  value={
-                    !formValue ? "" : !formValue ? "" : formValue?.fullName
-                  }
+                  value={!formValue ? "" : formValue?.fullName}
                   onChange={(e) => handleChange(e)}
                   className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
                 />

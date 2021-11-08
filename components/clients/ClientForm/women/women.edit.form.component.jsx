@@ -39,7 +39,7 @@ const WomenEditMeasuementForm = ({ handleChange, formValue }) => {
                       <input
                         type="number"
                         name="shoulderWidth"
-                        // value={formValue.bodyLength}
+                        value={!formValue ? "" : formValue.bodyLength}
                         onChange={(e) => handleChange(e)}
                         className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
                       />
@@ -54,7 +54,7 @@ const WomenEditMeasuementForm = ({ handleChange, formValue }) => {
                       <input
                         type="number"
                         name="bustAndPoint"
-                        // value={formValue.bodyWidth}
+                        value={!formValue ? "" : formValue.bodyWidth}
                         onChange={(e) => handleChange(e)}
                         className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
                       />
@@ -69,7 +69,7 @@ const WomenEditMeasuementForm = ({ handleChange, formValue }) => {
                       <input
                         type="number"
                         name="underBustAndPoint"
-                        // value={formValue.shoulderWidth}
+                        value={!formValue ? "" : formValue.shoulderWidth}
                         onChange={(e) => handleChange(e)}
                         className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
                       />
@@ -84,7 +84,7 @@ const WomenEditMeasuementForm = ({ handleChange, formValue }) => {
                       <input
                         type="number"
                         name="naturalWaist"
-                        // value={formValue.neckShortSleeve}
+                        value={!formValue ? "" : formValue.neckShortSleeve}
                         onChange={(e) => handleChange(e)}
                         className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
                       />
@@ -99,7 +99,7 @@ const WomenEditMeasuementForm = ({ handleChange, formValue }) => {
                       <input
                         type="number"
                         name="hipMeasurement"
-                        // value={formValue.neckShortSleeve}
+                        value={!formValue ? "" : formValue.neckShortSleeve}
                         onChange={(e) => handleChange(e)}
                         className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
                       />
@@ -114,7 +114,7 @@ const WomenEditMeasuementForm = ({ handleChange, formValue }) => {
                       <input
                         type="number"
                         name="highestHipPoint"
-                        // value={formValue.neckShortSleeve}
+                        value={!formValue ? "" : formValue.neckShortSleeve}
                         onChange={(e) => handleChange(e)}
                         className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
                       />
@@ -129,7 +129,7 @@ const WomenEditMeasuementForm = ({ handleChange, formValue }) => {
                       <input
                         type="number"
                         name="frontLengthBodice"
-                        // value={formValue.neckShortSleeve}
+                        value={!formValue ? "" : formValue.neckShortSleeve}
                         onChange={(e) => handleChange(e)}
                         className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
                       />
@@ -144,7 +144,7 @@ const WomenEditMeasuementForm = ({ handleChange, formValue }) => {
                       <input
                         type="number"
                         name="backLengthBodice"
-                        // value={formValue.neckShortSleeve}
+                        value={!formValue ? "" : formValue.neckShortSleeve}
                         onChange={(e) => handleChange(e)}
                         className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
                       />
@@ -159,7 +159,7 @@ const WomenEditMeasuementForm = ({ handleChange, formValue }) => {
                       <input
                         type="number"
                         name="fullLength"
-                        // value={formValue.neckShortSleeve}
+                        value={!formValue ? "" : formValue.neckShortSleeve}
                         onChange={(e) => handleChange(e)}
                         className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
                       />
@@ -174,7 +174,7 @@ const WomenEditMeasuementForm = ({ handleChange, formValue }) => {
                       <input
                         type="number"
                         name="sleeveLength"
-                        // value={formValue.neckShortSleeve}
+                        value={!formValue ? "" : formValue.neckShortSleeve}
                         onChange={(e) => handleChange(e)}
                         className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
                       />
@@ -189,7 +189,7 @@ const WomenEditMeasuementForm = ({ handleChange, formValue }) => {
                       <input
                         type="number"
                         name="sleeveWidth"
-                        // value={formValue.neckShortSleeve}
+                        value={!formValue ? "" : formValue.neckShortSleeve}
                         onChange={(e) => handleChange(e)}
                         className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
                       />
@@ -204,7 +204,7 @@ const WomenEditMeasuementForm = ({ handleChange, formValue }) => {
                       <input
                         type="number"
                         name="cuffWidth"
-                        // value={formValue.neckShortSleeve}
+                        value={!formValue ? "" : formValue.neckShortSleeve}
                         onChange={(e) => handleChange(e)}
                         className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
                       />
@@ -237,7 +237,7 @@ const WomenEditMeasuementForm = ({ handleChange, formValue }) => {
                       <input
                         type="number"
                         name="topLength"
-                        // value={formValue.bodyLength}
+                        value={!formValue ? "" : formValue.bodyLength}
                         onChange={(e) => handleChange(e)}
                         className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
                       />
@@ -252,7 +252,7 @@ const WomenEditMeasuementForm = ({ handleChange, formValue }) => {
                       <input
                         type="number"
                         name="shortLength"
-                        // value={formValue.bodyLength}
+                        value={!formValue ? "" : formValue.bodyLength}
                         onChange={(e) => handleChange(e)}
                         className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
                       />
@@ -267,7 +267,7 @@ const WomenEditMeasuementForm = ({ handleChange, formValue }) => {
                       <input
                         type="number"
                         name="skirtLength"
-                        // value={formValue.bodyLength}
+                        value={!formValue ? "" : formValue.bodyLength}
                         onChange={(e) => handleChange(e)}
                         className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
                       />
@@ -300,7 +300,7 @@ const WomenEditMeasuementForm = ({ handleChange, formValue }) => {
                       <input
                         type="number"
                         name="thighWidth"
-                        // value={formValue.bodyLength}
+                        value={!formValue ? "" : formValue.bodyLength}
                         onChange={(e) => handleChange(e)}
                         className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
                       />
@@ -315,7 +315,7 @@ const WomenEditMeasuementForm = ({ handleChange, formValue }) => {
                       <input
                         type="number"
                         name="inseamLength"
-                        // value={formValue.bodyWidth}
+                        value={!formValue ? "" : formValue.bodyWidth}
                         onChange={(e) => handleChange(e)}
                         className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
                       />
@@ -330,7 +330,7 @@ const WomenEditMeasuementForm = ({ handleChange, formValue }) => {
                       <input
                         type="number"
                         name="outseamLength"
-                        // value={formValue.shoulderWidth}
+                        value={!formValue ? "" : formValue.shoulderWidth}
                         onChange={(e) => handleChange(e)}
                         className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
                       />

@@ -12,6 +12,7 @@ const ClientsHero = () => {
               layout="fill"
               objectFit="cover"
               alt="Client Hero image"
+              priority={true}
             />
             <div className="absolute h-full w-full bg-gray-800 opacity-50"></div>
             <div className="absolute flex justify-center items-center w-full top-1/2">

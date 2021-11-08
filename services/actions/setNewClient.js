@@ -6,14 +6,16 @@ import {
   collection,
   addDoc,
   setDoc,
+  getDoc,
   doc,
   updateDoc,
   arrayUnion,
   serverTimestamp,
   increment,
 } from "firebase/firestore";
+import { SetImageClient } from "./setImageClient";
 
-export const SetNewClient = async (formValue, userDoc, user) => {
+export const SetNewClient = async (formValue, userDoc, user, imgValue) => {
   // const { userDoc, user } = useUser();
   // const cont = useContext(UserContext);
   // const { userDoc, user } = cont;
@@ -31,10 +33,20 @@ export const SetNewClient = async (formValue, userDoc, user) => {
     tailorID: uid,
     // image: "https://doodleipsum.com/500/avatar-3?shape=circle&bg=ceebff",
     image: genderCheck,
-    timestamp: serverTimestamp(),
+    createdTimestamp: serverTimestamp(),
     ...formValue,
   });
   await setDoc(doc(db, email, docRef.id), { id: docRef.id }, { merge: true });
+  // setNewDocID({ id: docRef.id });
+  // await setFormValue({ ...formValue, id: docRef.id });
+  if (imgValue?.photo) {
+    // console.log(formValue);
+    // console.log(imgValue);
+    const newName = await getDoc(doc(db, email, docRef.id));
+    const imageDoc = { id: docRef.id, fullName: newName.data().fullName };
+    await SetImageClient(imgValue, imageDoc, user);
+    // EditImageTailorProfile(imgValue, user);
+  }
 
   const tailorRef = doc(db, "tailors", uid);
   await updateDoc(tailorRef, {
