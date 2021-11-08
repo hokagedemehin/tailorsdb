@@ -28,7 +28,7 @@ const SuccessPage = () => {
           name="description"
           content="New Clients has been added successfully and you can now view the new client in the client list page"
         />
-        <link rel="icon" href="/logo/tailorlogo5.png" />
+        <link rel="icon" href="/logo/tailorlogo6.png" />
       </Head>
       <div className="bg-white py-6 sm:py-8 lg:py-12">
         <div className="max-w-screen-lg px-4 md:px-8 mx-auto">
