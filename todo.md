@@ -11,7 +11,7 @@
 - [ ] Social Login flow
 - [x] Reset password workflow
 - [ ] firebase image upload for new clients
-- [ ] Firebase image upload for tailors profile
+- [x] Firebase image upload for tailors profile
 - [ ] firebase storages folder structure
 - [x] Footer Links
 - [ ] firebase security rules

@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import TailorsImageCard from "./tailors.image.card.component";
 import { useRouter } from "next/router";
 import { EditTailorProfile } from "../../services/actions/editTailorProfile";
+import { EditImageTailorProfile } from "../../services/actions/editImageTailorProfile";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const TailorsEditProfileComponent = ({ userDoc, user }) => {
   // console.log(userDoc);
   // const { firstName, lastName, image } = !userDoc ? {} : userDoc;
   const [formValue, setFormValue] = useState(userDoc);
+  const [imgValue, setImgValue] = useState(null);
   console.log("formValu: ", formValue);
   const router = useRouter();
   const handleClick = (e, href) => {
@@ -21,9 +25,21 @@ const TailorsEditProfileComponent = ({ userDoc, user }) => {
     setFormValue({ ...formValue, [name]: value });
   };
 
+  const handleFileUpload = (e) => {
+    const name = e.target.name;
+    const value = e.target.files[0];
+    setImgValue({ ...imgValue, [name]: value });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // console.log(imgValue?.photo);
+
     await EditTailorProfile(formValue, user);
+    if (imgValue?.photo) {
+      await EditImageTailorProfile(imgValue, user);
+      // EditImageTailorProfile(imgValue, user);
+    }
     router.push("/profile");
   };
 
@@ -204,7 +220,7 @@ const TailorsEditProfileComponent = ({ userDoc, user }) => {
           </div>
         </div>
       </div>
-      ;
+      <ToastContainer />
     </div>
   );
 };

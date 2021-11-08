@@ -20,7 +20,7 @@ const TailorsImageCard = ({ userDoc }) => {
   return (
     <div>
       <div className="bg-white p-3 border-t-4 border-indigo-400 rounded-lg shadow-md">
-        <div className="image overflow-hidden">
+        <div className="image overflow-hidden rounded-lg">
           <img
             className="h-auto w-full mx-auto"
             src={image}
