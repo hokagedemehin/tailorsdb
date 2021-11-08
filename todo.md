@@ -16,3 +16,4 @@
 - [x] Footer Links
 - [ ] firebase security rules
 - [x] call to action component button
+- [ ] activate image compression extension

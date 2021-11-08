@@ -8,11 +8,11 @@ const EditProfilePage = () => {
   const router = useRouter();
   const { user, userDoc } = useUser();
   // console.log(user);
-  useEffect(() => {
-    if (!user) {
-      router.push("/");
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   if (!user) {
+  //     router.push("/");
+  //   }
+  // }, [user]);
 
   return (
     <Layout
