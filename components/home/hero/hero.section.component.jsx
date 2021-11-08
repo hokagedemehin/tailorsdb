@@ -120,7 +120,6 @@ const HeroSection = () => {
           </section>
         </div>
       </div>
-      ;
     </div>
   );
 };

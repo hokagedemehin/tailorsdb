@@ -20,7 +20,7 @@ const ClientEditDetails = ({ clientDoc }) => {
   const { userDoc, user } = useUser();
   const router = useRouter();
   // console.log("clients: ", clientDoc);
-  console.log("formValue", formValue);
+  // console.log("formValue", formValue);
 
   // useEffect(() => {
 

@@ -17,5 +17,5 @@
 - [ ] firebase security rules
 - [x] call to action component button
 - [ ] activate image compression extension
-- [ ] About page
+- [x] About page
 - [ ] nodemail react to send email notification
