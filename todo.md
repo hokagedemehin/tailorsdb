@@ -14,7 +14,7 @@
 - [x] Firebase image upload for tailors profile
 - [x] firebase storages folder structure
 - [x] Footer Links
-- [ ] firebase security rules
+- [x] firebase security rules
 - [x] call to action component button
 - [ ] activate image compression extension
 - [x] About page

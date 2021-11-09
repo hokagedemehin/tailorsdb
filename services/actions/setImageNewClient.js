@@ -5,7 +5,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export const SetImageClient = async (imgValue, formValue, user) => {
+export const SetImageNewClient = async (imgValue, formValue, user) => {
   const { uid, email } = user;
   // console.log(formValue);
   const id = formValue?.id;
@@ -75,23 +75,23 @@ export const SetImageClient = async (imgValue, formValue, user) => {
 
         // console.log(resizedNewName(downloadURL));
         resizedURL = resizedName(downloadURL);
-        await setDoc(
-          docRef,
-          {
-            image: downloadURL,
-            edittedTimestamp: serverTimestamp(),
-          },
-          { merge: true }
-        );
+        // await setDoc(
+        //   docRef,
+        //   {
+        //     image: downloadURL,
+        //     edittedTimestamp: serverTimestamp(),
+        //   },
+        //   { merge: true }
+        // );
       }
     );
   } catch (error) {
     console.error(error);
   }
-  // const result = {
-  //   email: email,
-  //   id: id,
-  //   resizedURL: resizedURL,
-  // };
-  // return result;
+  const result = {
+    email: email,
+    id: id,
+    resizedURL: resizedURL,
+  };
+  return result;
 };

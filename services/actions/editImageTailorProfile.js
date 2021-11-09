@@ -59,7 +59,7 @@ export const EditImageTailorProfile = async (imgValue, user) => {
         // const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
         const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
         // .then((downloadURL) => {
-        console.log("File available at", downloadURL);
+        // console.log("File available at", downloadURL);
         // });
         await setDoc(
           docRef,

@@ -49,7 +49,7 @@ const AboutContactUsComponent = () => {
 
             <div className="sm:col-span-2">
               <label
-                for="fullName"
+                htmlFor="fullName"
                 className="inline-block text-gray-800 text-sm sm:text-base mb-2"
               >
                 Full Name*
@@ -63,7 +63,7 @@ const AboutContactUsComponent = () => {
 
             <div className="sm:col-span-2">
               <label
-                for="email"
+                htmlFor="email"
                 className="inline-block text-gray-800 text-sm sm:text-base mb-2"
               >
                 Email*
@@ -77,7 +77,7 @@ const AboutContactUsComponent = () => {
 
             <div className="sm:col-span-2">
               <label
-                for="subject"
+                htmlFor="subject"
                 className="inline-block text-gray-800 text-sm sm:text-base mb-2"
               >
                 Subject*
@@ -91,7 +91,7 @@ const AboutContactUsComponent = () => {
 
             <div className="sm:col-span-2">
               <label
-                for="message"
+                htmlFor="message"
                 className="inline-block text-gray-800 text-sm sm:text-base mb-2"
               >
                 Message*

@@ -248,15 +248,14 @@ const AboutPageComponent = () => {
                 What is Tailor's db motivation
               </h1>
               <p className="lg:w-11/12 text-gray-500 xl:text-lg leading-relaxed mb-8 md:mb-12">
-                Our goal is to provide a solution that will allow you focus more
-                on the work processes that matters, so as for you to grow your
-                revenue and provide better customer's service to your client.{" "}
-                <br /> With us, you don't need to worry about where to keep your
-                clients measurements again, as all information are kept in a
-                safe and secure database online for you to reference easily and
-                quickly at any time from your devices. <br /> We want to be part
-                of your business success story, that is why we are here to
-                support you and give you the necessary tools to reach your goals
+                Our goal is to provide solutions that aloow better focus on work
+                processes that matter, therby helping you grow your revenue.{" "}
+                <br /> With us, the problem of lost client measurements and
+                information is solved, as all information are kept in a safe and
+                secure database for quick reference any time and on any device.{" "}
+                <br /> Being part of your business success is key for us, which
+                is why we are providing you with the necessary support and tools
+                to reach your goals.
               </p>
             </div>
             {/* <!-- content - end --> */}

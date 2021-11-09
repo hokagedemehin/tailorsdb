@@ -5,11 +5,11 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export const SetImageClient = async (imgValue, formValue, user) => {
+export const SaveImageURL = async (imgValue, formValue, user) => {
   const { uid, email } = user;
   // console.log(formValue);
   const id = formValue?.id;
-  const resizedURL = "";
+
   try {
     const docRef = doc(db, email, id);
     const storageRef = ref(
@@ -63,18 +63,14 @@ export const SetImageClient = async (imgValue, formValue, user) => {
         // .then((downloadURL) => {
         // console.log("File available at", downloadURL);
         // });
-        // gs://tailorsdb.appspot.com/clients/ibk2k7@gmail.com/Lysandra Mullins/cropped-oau-logo_400x400.png
         function resizedName(fileName, dimensions = "400x400") {
           const extIndex = fileName.lastIndexOf(".");
           const ext = fileName.substring(extIndex);
-          return `gs://tailorsdb.appspot.com/clients/ibk2k7@gmail.com/Lysandra Mullins/${fileName.substring(
-            0,
-            extIndex
-          )}_${dimensions}${ext}`;
+          return `${fileName.substring(0, extIndex)}_${dimensions}${ext}`;
         }
 
         // console.log(resizedNewName(downloadURL));
-        resizedURL = resizedName(downloadURL);
+        const resizedNewName = resizedName(downloadURL);
         await setDoc(
           docRef,
           {
@@ -88,10 +84,4 @@ export const SetImageClient = async (imgValue, formValue, user) => {
   } catch (error) {
     console.error(error);
   }
-  // const result = {
-  //   email: email,
-  //   id: id,
-  //   resizedURL: resizedURL,
-  // };
-  // return result;
 };
