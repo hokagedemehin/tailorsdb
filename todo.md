@@ -16,6 +16,7 @@
 - [x] Footer Links
 - [x] firebase security rules
 - [x] call to action component button
-- [ ] activate image compression extension
+- [x] activate image compression extension
 - [x] About page
 - [ ] nodemail react to send email notification
+- [x] intermediate page for profile & edit profile

@@ -10,7 +10,7 @@ const RegisterPage = () => {
   // console.log(user);
   useEffect(() => {
     if (user) {
-      router.push("/");
+      router.push("/clients");
     }
   }, [user]);
 
