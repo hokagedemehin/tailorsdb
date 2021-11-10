@@ -9,7 +9,7 @@ export const SetImageNewClient = async (imgValue, formValue, user) => {
   const { uid, email } = user;
   // console.log(formValue);
   const id = formValue?.id;
-  const resizedURL = "";
+  // const resizedURL = "";
   try {
     const docRef = doc(db, email, id);
     const storageRef = ref(
@@ -67,31 +67,32 @@ export const SetImageNewClient = async (imgValue, formValue, user) => {
         function resizedName(fileName, dimensions = "400x400") {
           const extIndex = fileName.lastIndexOf(".");
           const ext = fileName.substring(extIndex);
-          return `gs://tailorsdb.appspot.com/clients/ibk2k7@gmail.com/Lysandra Mullins/${fileName.substring(
-            0,
-            extIndex
-          )}_${dimensions}${ext}`;
+          return `gs://tailorsdb.appspot.com/clients/${email}/${
+            formValue?.fullName
+          }/${fileName.substring(0, extIndex)}_${dimensions}${ext}`;
         }
 
         // console.log(resizedNewName(downloadURL));
-        resizedURL = resizedName(downloadURL);
-        // await setDoc(
-        //   docRef,
-        //   {
-        //     image: downloadURL,
-        //     edittedTimestamp: serverTimestamp(),
-        //   },
-        //   { merge: true }
-        // );
+        const resizedURL = resizedName(downloadURL);
+        const compImg = ref(storage, resizedURL);
+        const compImgName = await getDownloadURL(compImg);
+        await setDoc(
+          docRef,
+          {
+            image: compImgName,
+            edittedTimestamp: serverTimestamp(),
+          },
+          { merge: true }
+        );
       }
     );
   } catch (error) {
     console.error(error);
   }
-  const result = {
-    email: email,
-    id: id,
-    resizedURL: resizedURL,
-  };
-  return result;
+  // const result = {
+  //   email: email,
+  //   id: id,
+  //   resizedURL: resizedURL,
+  // };
+  // return result;
 };

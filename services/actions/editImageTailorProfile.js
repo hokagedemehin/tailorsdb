@@ -57,18 +57,36 @@ export const EditImageTailorProfile = async (imgValue, user) => {
       async () => {
         // Upload completed successfully, now we can get the download URL
         // const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-        const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-        // .then((downloadURL) => {
+        // const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+
         // console.log("File available at", downloadURL);
-        // });
-        await setDoc(
-          docRef,
-          {
-            image: downloadURL,
-            edittedTimestamp: serverTimestamp(),
-          },
-          { merge: true }
-        );
+
+        function resizedName(fileName, dimensions = "400x400") {
+          const extIndex = fileName.lastIndexOf(".");
+          const ext = fileName.substring(extIndex);
+          return `tailors/${email}/${fileName.substring(
+            0,
+            extIndex
+          )}_${dimensions}${ext}`;
+        }
+        // console.log(resizedNewName(downloadURL));
+        const resizedURL = resizedName(imgValue?.photo?.name);
+        // console.log("resized url: ", resizedURL);
+        setTimeout(async () => {
+          const compImg = ref(storage, resizedURL);
+          const compImgName = await getDownloadURL(compImg);
+
+          // console.log("comp url: ", compImgName);
+
+          await setDoc(
+            docRef,
+            {
+              image: compImgName,
+              edittedTimestamp: serverTimestamp(),
+            },
+            { merge: true }
+          );
+        }, 5000);
       }
     );
   } catch (error) {
