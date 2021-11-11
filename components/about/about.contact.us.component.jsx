@@ -23,7 +23,7 @@ const AboutContactUsComponent = () => {
     // console.log(formValue);
 
     await SendFeedback(formValue, setFormValue);
-    // toast.success("🎉 Message sent successfully 🎉");
+    toast.success("🎉 Message sent successfully 🎉");
   };
 
   return (

@@ -18,7 +18,7 @@ export const SendFeedback = async (formValue, setFormValue) => {
       subject: subject,
       message: message,
     });
-    toast.success("🎉 Message sent successfully 🎉");
+    // toast.success("🎉 Message sent successfully 🎉");
 
     setFormValue({ fullName: "", email: "", subject: "", message: "" });
     // console.log(result);

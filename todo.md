@@ -20,3 +20,4 @@
 - [x] About page
 - [x] nodemail react to send email notification
 - [x] intermediate page for profile & edit profile
+- [ ] enforce all fields to be filled in the about us form
