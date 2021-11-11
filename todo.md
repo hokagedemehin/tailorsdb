@@ -18,5 +18,5 @@
 - [x] call to action component button
 - [x] activate image compression extension
 - [x] About page
-- [ ] nodemail react to send email notification
+- [x] nodemail react to send email notification
 - [x] intermediate page for profile & edit profile

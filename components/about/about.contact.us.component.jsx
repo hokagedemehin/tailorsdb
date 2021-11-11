@@ -1,6 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
+// import { FeedbackEmail, mailer } from "../../services/email";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { SendFeedback } from "../../services/actions/sendFeedback";
 
 const AboutContactUsComponent = () => {
+  const [formValue, setFormValue] = useState({
+    fullName: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setFormValue({ ...formValue, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // console.log(formValue);
+
+    await SendFeedback(formValue, setFormValue);
+    // toast.success("🎉 Message sent successfully 🎉");
+  };
+
   return (
     <div>
       <div className="bg-white py-6 sm:py-8 lg:py-12">
@@ -57,6 +82,8 @@ const AboutContactUsComponent = () => {
               <input
                 name="fullName"
                 type="text"
+                value={formValue.fullName}
+                onChange={(e) => handleChange(e)}
                 className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
               />
             </div>
@@ -71,6 +98,8 @@ const AboutContactUsComponent = () => {
               <input
                 name="email"
                 type="email"
+                value={formValue.email}
+                onChange={(e) => handleChange(e)}
                 className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
               />
             </div>
@@ -85,6 +114,8 @@ const AboutContactUsComponent = () => {
               <input
                 name="subject"
                 type="text"
+                value={formValue.subject}
+                onChange={(e) => handleChange(e)}
                 className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
               />
             </div>
@@ -98,12 +129,19 @@ const AboutContactUsComponent = () => {
               </label>
               <textarea
                 name="message"
+                value={formValue.message}
+                onChange={(e) => handleChange(e)}
                 className="w-full h-64 bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
               ></textarea>
             </div>
 
             <div className="sm:col-span-2 flex justify-between items-center">
-              <button className="inline-block bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700 focus-visible:ring ring-indigo-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3">
+              <button
+                onClick={(e) => {
+                  handleSubmit(e);
+                }}
+                className="inline-block bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700 focus-visible:ring ring-indigo-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3"
+              >
                 Send
               </button>
 
@@ -123,6 +161,7 @@ const AboutContactUsComponent = () => {
           </form>
           {/* <!-- form - end --> */}
         </div>
+        <ToastContainer />
       </div>
     </div>
   );
