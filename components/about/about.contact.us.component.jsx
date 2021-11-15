@@ -4,6 +4,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { SendFeedback } from "../../services/actions/sendFeedback";
 
+// *This is bold and highligted
+// !watch out for this kind of error, keep off
+// ?don't know what to do yet though
+// TODO looks funny
+
 const AboutContactUsComponent = () => {
   const [formValue, setFormValue] = useState({
     fullName: "",
@@ -21,9 +26,38 @@ const AboutContactUsComponent = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log(formValue);
+    // console.log(
+    //   formValue.message.length === 0 ||
+    //     formValue?.subject.length === 0 ||
+    //     formValue?.email.length === 0 ||
+    //     formValue?.fullName.length === 0
+    // );
 
-    await SendFeedback(formValue, setFormValue);
-    toast.success("🎉 Message sent successfully 🎉");
+    if (
+      // !formValue?.fullName ||
+      formValue?.fullName.length === 0 ||
+      // !formValue?.email ||
+      formValue?.email.length === 0 ||
+      // !formValue?.subject ||
+      formValue?.subject.length === 0 ||
+      // !formValue?.message ||
+      formValue?.message.length === 0
+    ) {
+      toast.error("🚩Please fill in all required fields 🚩");
+    }
+    if (
+      // formValue?.fullName &&
+      formValue?.fullName.length !== 0 &&
+      // formValue?.email &&
+      formValue?.email.length !== 0 &&
+      // formValue?.subject &&
+      formValue?.subject.length !== 0 &&
+      // formValue?.message &&
+      formValue?.message.length !== 0
+    ) {
+      await SendFeedback(formValue, setFormValue);
+      // toast.success("🎉 Message sent successfully 🎉");
+    }
   };
 
   return (

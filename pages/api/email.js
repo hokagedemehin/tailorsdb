@@ -7,17 +7,20 @@ dotenv.config({ path: path.join(__dirname, "config.env") });
 
 // console.log(path.join(__dirname, "config.env"));
 
-// console.log(
-//   "process: ",
-//   process.env.NEXT_PUBLIC_EMAIL_USERNAME,
-//   process.env.NEXT_PUBLIC_EMAIL_PASSWORD
-// );
+console.log(
+  "process: ",
+  process.env.NEXT_PUBLIC_EMAIL_USERNAME,
+  process.env.NEXT_PUBLIC_EMAIL_PASSWORD
+);
 
-export default async function sendEmail(req, res) {
+export default async function email(req, res) {
   // console.log(req.body);
   const { fullName, email, subject, message } = req.body;
   let transporter = nodemailer.createTransport({
-    service: "Gmail",
+    service: "gmail",
+    port: 465,
+    secure: true,
+
     auth: {
       user: process.env.NEXT_PUBLIC_EMAIL_USERNAME,
       pass: process.env.NEXT_PUBLIC_EMAIL_PASSWORD,

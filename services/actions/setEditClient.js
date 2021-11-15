@@ -11,7 +11,7 @@ export const SetEditClient = async (formValue, userDoc) => {
   await setDoc(
     doc(db, email, id),
     {
-      timestamp: serverTimestamp(),
+      edittedTimestamp: serverTimestamp(),
       ...formValue,
     },
     { merge: true }

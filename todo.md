@@ -18,6 +18,8 @@
 - [x] call to action component button
 - [x] activate image compression extension
 - [x] About page
-- [x] nodemail react to send email notification
+- [ ] nodemail react to send email notification
 - [x] intermediate page for profile & edit profile
-- [ ] enforce all fields to be filled in the about us form
+- [ ] enforce all fields to be filled in the about us form 
+- [x] Search by date and phone number
+- [ ] other measurement section, which will allow you to add unique measurement not common for everyone

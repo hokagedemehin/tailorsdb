@@ -12,7 +12,7 @@ const AboutPage = () => {
     >
       <AboutHeroSectionComponent />
       <AboutPageComponent />
-      <AboutContactUsComponent />
+      {/* <AboutContactUsComponent /> */}
     </Layout>
   );
 };

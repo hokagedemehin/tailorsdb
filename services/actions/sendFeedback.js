@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export const SendFeedback = async (formValue, setFormValue) => {
@@ -18,11 +18,12 @@ export const SendFeedback = async (formValue, setFormValue) => {
       subject: subject,
       message: message,
     });
-    // toast.success("🎉 Message sent successfully 🎉");
+    toast.success("🎉 Message sent successfully 🎉");
 
     setFormValue({ fullName: "", email: "", subject: "", message: "" });
     // console.log(result);
   } catch (error) {
+    console.error(error);
     toast.error("💥 There was an error sending message 💥");
   }
 };

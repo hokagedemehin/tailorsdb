@@ -5,6 +5,8 @@ import { useRouter } from "next/router";
 import ClientSearch from "./client.search.component";
 import PaginationComp from "../../utils/pagination";
 import { useUser } from "../../../services/context/userContext";
+import moment from "moment";
+
 // import { db } from "../../../services/firebase/firebase";
 // import { useUser } from "../../../services/context/userContext";
 // import { getAllClients } from "../../../services/actions/getAllClients";
@@ -31,12 +33,41 @@ const ClientsList = (props) => {
     data1 = [...allDocs];
   }
   const data2 = data1.filter((val) => {
+    console.log(
+      moment(val.createdTimestamp.toDate()).format("MMMM").toLowerCase(),
+      searchTerm.toLowerCase()
+    );
+    // console.log(
+    //   moment(val.createdTimestamp.toDate())
+    //     .format("MMMM YYYY")
+    //     .toLowerCase()
+    //     .includes("november")
+    // );
+    // const createdTime = moment(val.createdTimestamp.toDate()).format("MMMM YYYY")
     if (searchTerm == "" || searchTerm.length === 0) {
+      // console.log(val);
       return val;
-    } else if (val.fullName.toLowerCase().includes(searchTerm.toLowerCase())) {
+    } else if (
+      val.fullName &&
+      val.fullName.toLowerCase().includes(searchTerm.toLowerCase())
+    ) {
+      // console.log("full name works");
+      return val;
+    } else if (val.phoneNo && val.phoneNo.includes(searchTerm)) {
+      // console.log("phone no works");
+      return val;
+    } else if (
+      val.createdTimestamp &&
+      moment(val.createdTimestamp.toDate())
+        .format("MMMM")
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase())
+    ) {
+      // console.log("date works");
       return val;
     }
   });
+  // console.log("🚀 ~ file: clients.list.component.jsx ~ line 44 ~ data2 ~ data2", data2)
   // console.log("data length:", data1.length);
 
   const indexOfLastClient = currentPage * clientPerPage;
