@@ -7,14 +7,23 @@ import {
 import { auth } from "../../services/firebase/firebase";
 import { useRouter } from "next/router";
 import { useUser } from "../../services/context/userContext";
-import { SetNewGoogleTailor } from "../../services/actions/setGoogleTailor";
+import { SingInGoogleTailor } from "../../services/actions/signInGoogleTailor";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+// import { SetNewGithubTailor } from "../../services/actions/setGithubTailor";
 // import { SetResetPassword } from "../../services/actions/setResetPassword";
 
 const LoginComponent = () => {
   const [formValue, setFormValue] = useState({});
   const { user } = useUser();
+  const router = useRouter();
+
+  // useEffect(() => {
+  //   if (user) {
+  //     router.back();
+  //     router.push()
+  //   }
+  // }, [user]);
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -22,7 +31,6 @@ const LoginComponent = () => {
     setFormValue({ ...formValue, [name]: value });
   };
   // console.log(formValue);
-  const router = useRouter();
 
   const loginUser = async (e) => {
     // console.log("button clicked", formValue);
@@ -40,9 +48,11 @@ const LoginComponent = () => {
     // router.back();
   };
 
-  const googleSignin = async (e) => {
-    // e.preventDefault();
-    await SetNewGoogleTailor();
+  const googleSignin = (e) => {
+    e.preventDefault();
+    // SetNewGoogleTailor();
+    SingInGoogleTailor();
+    // SetNewGithubTailor();
   };
 
   // const handleReset = async (e) => {
@@ -128,7 +138,7 @@ const LoginComponent = () => {
                   Continue with Facebook
                 </button> */}
 
-                {/* <button
+                <button
                   onClick={(e) => googleSignin(e)}
                   className="flex justify-center items-center bg-white hover:bg-gray-100 active:bg-gray-200 border border-gray-300 focus-visible:ring ring-gray-300 text-gray-800 text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 gap-2 px-8 py-3"
                 >
@@ -158,7 +168,7 @@ const LoginComponent = () => {
                     />
                   </svg>
                   Continue with Google
-                </button> */}
+                </button>
               </div>
 
               <div className="flex flex-col space-y-2 justify-center items-center bg-gray-100 p-4">

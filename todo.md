@@ -8,7 +8,7 @@
 - [x] Enforce gender selection on client details and edit page
 - [x] Card details page proper redering of right information
 - [x] Edit client measurements page
-- [ ] Social Login flow
+- [x] Social Login flow
 - [x] Reset password workflow
 - [x] firebase image upload for new clients
 - [x] Firebase image upload for tailors profile
@@ -18,8 +18,8 @@
 - [x] call to action component button
 - [x] activate image compression extension
 - [x] About page
-- [ ] nodemail react to send email notification
 - [x] intermediate page for profile & edit profile
-- [ ] enforce all fields to be filled in the about us form 
 - [x] Search by date and phone number
+- [ ] nodemail react to send email notification
+- [ ] enforce all fields to be filled in the about us form 
 - [ ] other measurement section, which will allow you to add unique measurement not common for everyone

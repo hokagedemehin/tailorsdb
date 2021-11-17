@@ -40,6 +40,12 @@ export default function AddNewClient() {
     setFormValue({ ...formValue, [name]: value });
   };
 
+  const handleNewChange = (e) => {
+    const name = e.target.name === "measurementName" ? e.target.value : "";
+    const value = e.target.name === "measurementValue" ? e.target.value : "";
+    setFormValue({ ...formValue, [name]: value });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -61,7 +67,7 @@ export default function AddNewClient() {
       // console.log("final Data:", formValue);
     }
   };
-  // console.log(formValue);
+  console.log(formValue);
   return (
     <div>
       <Layout
@@ -264,6 +270,7 @@ export default function AddNewClient() {
                     <MenMeasuementForm
                       handleChange={handleChange}
                       handleFileUpload={handleFileUpload}
+                      handleNewChange={handleNewChange}
                       // formValue={formValue}
                     />
                     <div className="flex">

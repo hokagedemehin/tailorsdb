@@ -3,8 +3,9 @@ import { useRouter } from "next/router";
 // import { auth } from "../../services/firebase/firebase";
 // import { createUserWithEmailAndPassword } from "firebase/auth";
 import { SetNewTailor } from "../../services/actions/setNewTailor";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { SignUpGoogleTailor } from "../../services/actions/signUpGoogleTailor";
 
 const RegisterComponent = () => {
   const [formValue, setFormValue] = useState({});
@@ -14,17 +15,38 @@ const RegisterComponent = () => {
     const value = e.target.value;
     setFormValue({ ...formValue, [name]: value });
   };
-  // console.log(formValue);
+  console.log(formValue);
   const router = useRouter();
 
   const registerUser = async (e) => {
     // console.log("button clicked", formValue);
     e.preventDefault();
-
+    if (
+      !formValue?.firstName ||
+      !formValue?.lastName ||
+      !formValue?.email ||
+      !formValue?.password
+    ) {
+      // console.log("stop send");
+      toast.error("💥 Please fill all required fields 💥");
+    }
+    if (
+      formValue?.firstName &&
+      formValue?.lastName &&
+      formValue?.email &&
+      formValue?.password
+    ) {
+      await SetNewTailor(formValue);
+    }
     // console.log(res);
-    await SetNewTailor(formValue);
+
     // router.push("/clients");
     // router.back();
+  };
+
+  const handleGoogleSignUp = async (e) => {
+    e.preventDefault();
+    await SignUpGoogleTailor();
   };
 
   const handleClick = (e) => {
@@ -53,7 +75,7 @@ const RegisterComponent = () => {
                       First Name*
                     </label>
                     <input
-                      required
+                      // required
                       type="text"
                       name="firstName"
                       onChange={(e) => handleChange(e)}
@@ -68,7 +90,7 @@ const RegisterComponent = () => {
                       Last Name*
                     </label>
                     <input
-                      required
+                      // required
                       type="text"
                       name="lastName"
                       onChange={(e) => handleChange(e)}
@@ -84,7 +106,7 @@ const RegisterComponent = () => {
                     Email*
                   </label>
                   <input
-                    required
+                    // required
                     type="email"
                     name="email"
                     onChange={(e) => handleChange(e)}
@@ -100,7 +122,7 @@ const RegisterComponent = () => {
                     Password*
                   </label>
                   <input
-                    required
+                    // required
                     type="password"
                     name="password"
                     onChange={(e) => handleChange(e)}
@@ -115,12 +137,12 @@ const RegisterComponent = () => {
                   Register
                 </button>
 
-                {/* <div className="flex justify-center items-center relative">
+                <div className="flex justify-center items-center relative">
                   <span className="h-px bg-gray-300 absolute inset-x-0"></span>
                   <span className="bg-white text-gray-400 text-sm relative px-4">
                     Register with social
                   </span>
-                </div> */}
+                </div>
 
                 {/* <button className="flex justify-center items-center bg-blue-500 hover:bg-blue-600 active:bg-blue-700 focus-visible:ring ring-blue-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 gap-2 px-8 py-3">
                   <svg
@@ -139,7 +161,10 @@ const RegisterComponent = () => {
                   Continue with Facebook
                 </button> */}
 
-                {/* <button className="flex justify-center items-center bg-white hover:bg-gray-100 active:bg-gray-200 border border-gray-300 focus-visible:ring ring-gray-300 text-gray-800 text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 gap-2 px-8 py-3">
+                <button
+                  onClick={(e) => handleGoogleSignUp(e)}
+                  className="flex justify-center items-center bg-white hover:bg-gray-100 active:bg-gray-200 border border-gray-300 focus-visible:ring ring-gray-300 text-gray-800 text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 gap-2 px-8 py-3"
+                >
                   <svg
                     className="w-5 h-5 flex-shrink-0"
                     width="24"
@@ -166,7 +191,7 @@ const RegisterComponent = () => {
                     />
                   </svg>
                   Continue with Google
-                </button> */}
+                </button>
               </div>
 
               <div className="flex justify-center items-center bg-gray-100 p-4">

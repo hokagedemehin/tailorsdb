@@ -33,10 +33,10 @@ const ClientsList = (props) => {
     data1 = [...allDocs];
   }
   const data2 = data1.filter((val) => {
-    console.log(
-      moment(val.createdTimestamp.toDate()).format("MMMM").toLowerCase(),
-      searchTerm.toLowerCase()
-    );
+    // console.log(
+    //   moment(val.createdTimestamp.toDate()).format("MMMM").toLowerCase(),
+    //   searchTerm.toLowerCase()
+    // );
     // console.log(
     //   moment(val.createdTimestamp.toDate())
     //     .format("MMMM YYYY")
@@ -59,7 +59,7 @@ const ClientsList = (props) => {
     } else if (
       val.createdTimestamp &&
       moment(val.createdTimestamp.toDate())
-        .format("MMMM")
+        .format("MMMM YYYY")
         .toLowerCase()
         .includes(searchTerm.toLowerCase())
     ) {

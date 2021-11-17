@@ -11,7 +11,8 @@ const LoginPage = () => {
   // console.log(user);
   useEffect(() => {
     if (user) {
-      router.back();
+      // router.back();
+      router.push("/clients");
     }
   }, [user]);
 

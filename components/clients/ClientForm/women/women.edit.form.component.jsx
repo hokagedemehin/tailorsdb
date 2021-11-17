@@ -46,7 +46,7 @@ const WomenEditMeasuementForm = ({ handleChange, formValue }) => {
                     </div>
                     <div>
                       <label
-                        htmlFor="bustAndBustPoint"
+                        htmlFor="bustAndPoint"
                         className="inline-block text-gray-800 text-sm sm:text-base mb-2"
                       >
                         Bust / Bust Point
@@ -54,6 +54,21 @@ const WomenEditMeasuementForm = ({ handleChange, formValue }) => {
                       <input
                         type="number"
                         name="bustAndPoint"
+                        value={!formValue ? "" : formValue.bodyWidth}
+                        onChange={(e) => handleChange(e)}
+                        className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="bustSpan"
+                        className="inline-block text-gray-800 text-sm sm:text-base mb-2"
+                      >
+                        Bust Point
+                      </label>
+                      <input
+                        type="number"
+                        name="bustSpan"
                         value={!formValue ? "" : formValue.bodyWidth}
                         onChange={(e) => handleChange(e)}
                         className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
