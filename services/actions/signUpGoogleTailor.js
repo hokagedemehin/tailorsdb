@@ -1,6 +1,6 @@
 import { auth, db } from "../firebase/firebase";
 // import { useUser } from "../context/userContext";
-import { doc, setDoc, getDoc, serverTimestamp } from "firebase/firestore";
+import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import {
   // signInWithRedirect,
   GoogleAuthProvider,

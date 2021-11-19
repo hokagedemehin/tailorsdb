@@ -77,57 +77,55 @@ const TailorsProfileComponent = ({ userDoc }) => {
                 <div className="text-gray-700">
                   <div className="grid md:grid-cols-2 text-sm">
                     <div className="grid grid-cols-2">
-                      <div className="px-4 py-2 font-semibold">First Name</div>
-                      <div className="px-4 py-2">{firstName}</div>
+                      <div className=" py-2 font-semibold">First Name</div>
+                      <div className=" py-2">{firstName}</div>
                     </div>
                     <div className="grid grid-cols-2">
-                      <div className="px-4 py-2 font-semibold">Last Name</div>
-                      <div className="px-4 py-2">{lastName}</div>
+                      <div className=" py-2 font-semibold">Last Name</div>
+                      <div className=" py-2">{lastName}</div>
                     </div>
                     {/* <div className="grid grid-cols-2">
-                      <div className="px-4 py-2 font-semibold">Gender</div>
-                      <div className="px-4 py-2">Female</div>
+                      <div className=" py-2 font-semibold">Gender</div>
+                      <div className=" py-2">Female</div>
                     </div> */}
                     <div className="grid grid-cols-2">
-                      <div className="px-4 py-2 font-semibold">Contact No.</div>
-                      <div className="px-4 py-2">
+                      <div className=" py-2 font-semibold">Contact No.</div>
+                      <div className=" py-2">
                         {!phoneNo ? "+11 998001001" : phoneNo}
                       </div>
                     </div>
                     {/* <div className="grid grid-cols-2">
-                      <div className="px-4 py-2 font-semibold">Current Address</div>
-                      <div className="px-4 py-2">Beech Creek, PA, Pennsylvania</div>
+                      <div className=" py-2 font-semibold">Current Address</div>
+                      <div className=" py-2">Beech Creek, PA, Pennsylvania</div>
                     </div> */}
                     {/* <div className="grid grid-cols-2">
-                      <div className="px-4 py-2 font-semibold">
+                      <div className=" py-2 font-semibold">
                         Permanant Address
                       </div>
-                      <div className="px-4 py-2">
+                      <div className=" py-2">
                         Arlington Heights, IL, Illinois
                       </div>
                     </div> */}
                     <div className="grid grid-cols-2">
-                      <div className="px-4 py-2 font-semibold">Email.</div>
-                      <div className="px-4 py-2">
-                        <a
+                      <div className=" py-2 font-semibold">Email.</div>
+                      <div className=" py-2">
+                        {/* <a
                           className="text-blue-800"
                           href="mailto:jane@example.com"
-                        >
-                          {email}
-                        </a>
+                        > */}
+                        {email}
+                        {/* </a> */}
                       </div>
                     </div>
                     <div className="grid grid-cols-2">
-                      <div className="px-4 py-2 font-semibold">Birthday</div>
-                      <div className="px-4 py-2">
+                      <div className=" py-2 font-semibold">Birthday</div>
+                      <div className=" py-2">
                         {!birthDay ? "Feb 06, 1998" : birthDay}
                       </div>
                     </div>
                     <div className="grid grid-cols-2">
-                      <div className="px-4 py-2 font-semibold">
-                        No of Clients
-                      </div>
-                      <div className="px-4 py-2">{clientsCount}</div>
+                      <div className=" py-2 font-semibold">No of Clients</div>
+                      <div className=" py-2">{clientsCount}</div>
                     </div>
                   </div>
                 </div>

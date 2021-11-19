@@ -67,7 +67,7 @@ export default function AddNewClient() {
       // console.log("final Data:", formValue);
     }
   };
-  console.log(formValue);
+  // console.log(formValue);
   return (
     <div>
       <Layout

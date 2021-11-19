@@ -16,7 +16,29 @@ export const SingInGoogleTailor = async () => {
 
   try {
     const provider = new GoogleAuthProvider();
-    await signInWithPopup(auth, provider);
+    const result = await signInWithPopup(auth, provider);
+    const { uid, displayName, email } = result.user;
+    const docRef = doc(db, "tailors", uid);
+
+    const docSnap = await getDoc(docRef);
+    if (!docSnap.exists()) {
+      // console.log("data: ", docSnap.data());
+      const names = displayName.split(" ");
+      await setDoc(
+        docRef,
+        {
+          firstName: names[0],
+          lastName: names[1],
+          email: email,
+          clients: [],
+          clientsCount: 0,
+          image:
+            "https://avatars.dicebear.com/api/micah/:child.svg?mouth[]=laughing&mouth[]=smile&glassesProbability=100",
+          createdTimestamp: serverTimestamp(),
+        },
+        { merge: true }
+      );
+    }
     // const result = await signInWithPopup(auth, provider);
     // await signInWithRedirect(auth, provider);
     // const result = await getRedirectResult(auth);
