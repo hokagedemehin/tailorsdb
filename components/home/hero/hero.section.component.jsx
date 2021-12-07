@@ -38,7 +38,7 @@ const HeroSection = () => {
                 Revolutionary way to store client's measurements
               </h1>
               <p className="lg:w-4/5 text-gray-500 xl:text-lg leading-relaxed mb-8 md:mb-12">
-                Get and save all your clients measurements and relevant
+                Get and save all your client's measurements and relevant
                 information safely and access them anywhere at anytime
               </p>
               <div className="flex sm:flex-row sm:justify-center lg:justify-start gap-2.5">
