@@ -17,7 +17,7 @@ const ContentComponent = () => {
             />
           </div>
           <div className="md:flex-1 px-3 lg:px-6 mb-4 md:mb-0">
-            <p className="text-2xl lg:text-4xl font-black pt-3 lg:pt-6">
+            <p className="text-2xl lg:text-4xl font-black pt-3 pb-3 lg:pt-6">
               Record Keeping
             </p>
             <p className="text-md lg:text-lg text-justify text-gray-500 font-semibold pb-3 ">

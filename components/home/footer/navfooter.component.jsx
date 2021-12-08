@@ -17,7 +17,7 @@ const FooterNav = () => {
               {/* <!-- logo - start --> */}
               <div className="lg:-mt-2 ">
                 <a
-                  href="!#"
+                  href="/"
                   className="inline-flex items-center text-gray-100 text-xl md:text-2xl font-bold gap-2"
                   aria-label="logo"
                 >
