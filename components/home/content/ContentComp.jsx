@@ -12,7 +12,11 @@ const ContentComponent = () => {
       <div className='tw-mx-auto tw-max-w-screen-2xl tw-space-y-10 tw-px-4 md:tw-space-y-20 md:tw-px-8'>
         {/* record keeping */}
         <div className='tw-flex tw-flex-col-reverse tw-items-center md:tw-flex-row'>
-          <div className='tw-relative tw-h-[10rem] tw-w-[20rem] tw-overflow-hidden tw-rounded-lg tw-shadow-md md:tw-h-[15rem]  md:tw-w-fit md:tw-flex-1 lg:tw-h-[20rem]  '>
+          <div
+            data-aos='fade-up'
+            data-aos-duration='2000'
+            className='tw-relative tw-h-[10rem] tw-w-[20rem] tw-overflow-hidden tw-rounded-lg tw-shadow-md md:tw-h-[15rem]  md:tw-w-fit md:tw-flex-1 lg:tw-h-[20rem]  '
+          >
             <Image
               layout='fill'
               objectFit='contain'
@@ -22,7 +26,11 @@ const ContentComponent = () => {
               placeholder='blur'
             />
           </div>
-          <div className='tw-mb-4 tw-space-y-2 tw-px-3 md:tw-mb-0 md:tw-flex-1 lg:tw-px-6'>
+          <div
+            data-aos='fade-down'
+            data-aos-duration='2000'
+            className='tw-mb-4 tw-space-y-2 tw-px-3 md:tw-mb-0 md:tw-flex-1 lg:tw-px-6'
+          >
             <Typography className='tw-pt-3 tw-pb-3 tw-font-fam3 tw-text-2xl tw-font-black tw-text-purple-600 lg:tw-pt-6 lg:tw-text-4xl'>
               Record Keeping
             </Typography>
@@ -35,7 +43,11 @@ const ContentComponent = () => {
         </div>
         {/* safe & secure */}
         <div className='tw-safe tw-flex tw-h-full  tw-flex-col-reverse tw-items-center md:tw-flex-row-reverse '>
-          <div className='tw-relative tw-h-[10rem] tw-w-[20rem] tw-overflow-hidden tw-rounded-lg tw-shadow-md md:tw-h-[15rem]  md:tw-w-fit md:tw-flex-1 lg:tw-h-[20rem] '>
+          <div
+            data-aos='fade-down'
+            data-aos-duration='2000'
+            className='tw-relative tw-h-[10rem] tw-w-[20rem] tw-overflow-hidden tw-rounded-lg tw-shadow-md md:tw-h-[15rem]  md:tw-w-fit md:tw-flex-1 lg:tw-h-[20rem] '
+          >
             <Image
               layout='fill'
               objectFit='contain'
@@ -45,7 +57,11 @@ const ContentComponent = () => {
               alt='content image'
             />
           </div>
-          <div className='tw-mb-4 tw-px-3 md:tw-mb-0 md:tw-flex-1 lg:tw-px-6'>
+          <div
+            data-aos='fade-up'
+            data-aos-duration='2000'
+            className='tw-mb-4 tw-px-3 md:tw-mb-0 md:tw-flex-1 lg:tw-px-6'
+          >
             <Typography className='tw-pt-3 tw-pb-3 tw-font-fam3 tw-text-2xl tw-font-black tw-text-purple-500 lg:tw-pt-6 lg:tw-text-4xl'>
               Safe & Secure
             </Typography>
@@ -58,7 +74,11 @@ const ContentComponent = () => {
         </div>
         {/* quick search */}
         <div className='tw-flex tw-h-full tw-flex-col-reverse tw-items-center md:tw-flex-row '>
-          <div className='tw-relative tw-h-[10rem] tw-w-[20rem] tw-overflow-hidden tw-rounded-lg tw-shadow-md md:tw-h-[15rem]  md:tw-w-fit md:tw-flex-1 lg:tw-h-[20rem] '>
+          <div
+            data-aos='fade-up'
+            data-aos-duration='2000'
+            className='tw-relative tw-h-[10rem] tw-w-[20rem] tw-overflow-hidden tw-rounded-lg tw-shadow-md md:tw-h-[15rem]  md:tw-w-fit md:tw-flex-1 lg:tw-h-[20rem] '
+          >
             <Image
               layout='fill'
               objectFit='contain'
@@ -68,7 +88,11 @@ const ContentComponent = () => {
               alt='content image'
             />
           </div>
-          <div className='tw-mb-4 tw-px-3 md:tw-mb-0 md:tw-flex-1 lg:tw-px-6'>
+          <div
+            data-aos='fade-down'
+            data-aos-duration='2000'
+            className='tw-mb-4 tw-px-3 md:tw-mb-0 md:tw-flex-1 lg:tw-px-6'
+          >
             <Typography className='tw-pt-3 tw-pb-3 tw-font-fam3 tw-text-2xl tw-font-black tw-text-purple-500 lg:tw-pt-6 lg:tw-text-4xl'>
               Quick Search
             </Typography>
@@ -80,7 +104,11 @@ const ContentComponent = () => {
         </div>
         {/* full access */}
         <div className='tw-screens tw-flex tw-h-full tw-flex-col-reverse tw-items-center md:tw-flex-row-reverse  '>
-          <div className='tw-relative tw-h-[10rem] tw-w-[20rem] tw-overflow-hidden tw-rounded-lg tw-shadow-md md:tw-h-[15rem]  md:tw-w-fit md:tw-flex-1 lg:tw-h-[20rem] '>
+          <div
+            data-aos='fade-down'
+            data-aos-duration='2000'
+            className='tw-relative tw-h-[10rem] tw-w-[20rem] tw-overflow-hidden tw-rounded-lg tw-shadow-md md:tw-h-[15rem]  md:tw-w-fit md:tw-flex-1 lg:tw-h-[20rem] '
+          >
             <Image
               layout='fill'
               objectFit='contain'
@@ -90,7 +118,11 @@ const ContentComponent = () => {
               alt='content image'
             />
           </div>
-          <div className='tw-mb-4 tw-px-3 md:tw-mb-0 md:tw-flex-1 lg:tw-px-6'>
+          <div
+            data-aos='fade-up'
+            data-aos-duration='2000'
+            className='tw-mb-4 tw-px-3 md:tw-mb-0 md:tw-flex-1 lg:tw-px-6'
+          >
             <Typography className='tw-pt-3 tw-pb-3 tw-font-fam3 tw-text-2xl tw-font-black tw-text-purple-500 lg:tw-pt-6 lg:tw-text-4xl'>
               Full Access
             </Typography>

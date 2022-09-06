@@ -2,7 +2,7 @@ import React from 'react';
 // import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { Button, Typography } from '@mui/material';
-
+import action2 from '../../../public/home/actioncall/action2.jpg';
 const CallToActionComponent = () => {
   // const router = useRouter();
   // const handleClick = (e, href) => {
@@ -13,13 +13,18 @@ const CallToActionComponent = () => {
 
   return (
     <div>
-      <div className='tw-bg-white tw-py-6 sm:tw-py-8 lg:tw-py-12'>
+      <div
+        data-aos='fade-up'
+        data-aos-duration='2000'
+        className='tw-bg-white tw-py-6 sm:tw-py-8 lg:tw-py-12'
+      >
         <div className='tw-mx-auto tw-max-w-screen-2xl tw-px-4 md:tw-px-8'>
           <div className='tw-flex tw-flex-col tw-overflow-hidden tw-rounded-lg tw-bg-gray-200 sm:tw-flex-row md:tw-h-80'>
             {/* <!-- image - start --> */}
             <div className='tw-relative tw-order-first tw-h-48 tw-w-full tw-bg-gray-300 sm:tw-order-none sm:tw-h-auto sm:tw-w-1/2 lg:tw-w-2/5'>
               <Image
-                src='/home/actioncall/action2.jpg'
+                src={action2}
+                placeholder='blur'
                 layout='fill'
                 objectFit='cover'
                 loading='lazy'

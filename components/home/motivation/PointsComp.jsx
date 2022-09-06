@@ -7,7 +7,11 @@ const PointsComp = () => {
       <div className='tw-bg-white tw-py-6 sm:tw-py-8 lg:tw-py-12'>
         <div className='tw-mx-auto tw-max-w-screen-2xl tw-px-4 md:tw-px-8'>
           {/* <!-- text - start --> */}
-          <div className='tw-mb-10 md:tw-mb-16'>
+          <div
+            data-aos='zoom-in'
+            data-aos-duration='2000'
+            className='tw-mb-10 md:tw-mb-16'
+          >
             <Typography className='tw-mx-auto tw-max-w-screen-md tw-text-center tw-font-fam1 tw-text-lg tw-font-bold tw-text-gray-600 md:tw-text-2xl '>
               We want to provide the right tools for you to be able to zero in
               on what matters in your business
@@ -17,7 +21,12 @@ const PointsComp = () => {
 
           <div className='tw-grid tw-gap-4 sm:tw-grid-cols-2 md:tw-grid-cols-3 lg:tw-grid-cols-4'>
             {/* <!-- feature - start --> */}
-            <div className='md:tw-space-8 tw-flex tw-items-center tw-space-x-4'>
+            <div
+              data-aos='zoom-in'
+              data-aos-duration='2000'
+              data-aos-delay='100'
+              className='md:tw-space-8 tw-flex tw-items-center tw-space-x-4'
+            >
               <div className='tw-flex tw-h-12 tw-w-12 tw-flex-shrink-0 tw-items-center tw-justify-center tw-rounded-lg tw-bg-indigo-500 tw-text-white tw-shadow-lg md:tw-h-14 md:tw-w-14 md:tw-rounded-xl'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
@@ -45,8 +54,14 @@ const PointsComp = () => {
               </div>
             </div>
             {/* <!-- feature - end --> */}
+
             {/* <!-- feature - start --> */}
-            <div className='md:tw-space-8 tw-flex tw-items-center tw-space-x-4'>
+            <div
+              data-aos='zoom-in'
+              data-aos-duration='2000'
+              data-aos-delay='200'
+              className='md:tw-space-8 tw-flex tw-items-center tw-space-x-4'
+            >
               <div className='tw-flex tw-h-12 tw-w-12 tw-flex-shrink-0 tw-items-center tw-justify-center tw-rounded-lg tw-bg-indigo-500 tw-text-white tw-shadow-lg md:tw-h-14 md:tw-w-14 md:tw-rounded-xl'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
@@ -75,7 +90,12 @@ const PointsComp = () => {
             </div>
             {/* <!-- feature - end --> */}
             {/* <!-- feature - start --> */}
-            <div className='md:tw-space-8 tw-flex tw-items-center tw-space-x-4'>
+            <div
+              data-aos='zoom-in'
+              data-aos-duration='2000'
+              data-aos-delay='300'
+              className='md:tw-space-8 tw-flex tw-items-center tw-space-x-4'
+            >
               <div className='tw-flex tw-h-12 tw-w-12 tw-flex-shrink-0 tw-items-center tw-justify-center tw-rounded-lg tw-bg-indigo-500 tw-text-white tw-shadow-lg md:tw-h-14 md:tw-w-14 md:tw-rounded-xl'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
@@ -104,7 +124,12 @@ const PointsComp = () => {
             </div>
             {/* <!-- feature - end --> */}
             {/* <!-- feature - start --> */}
-            <div className='md:tw-space-8 tw-flex tw-items-center tw-space-x-4'>
+            <div
+              data-aos='zoom-in'
+              data-aos-duration='2000'
+              data-aos-delay='400'
+              className='md:tw-space-8 tw-flex tw-items-center tw-space-x-4'
+            >
               <div className='tw-flex tw-h-12 tw-w-12 tw-flex-shrink-0 tw-items-center tw-justify-center tw-rounded-lg tw-bg-indigo-500 tw-text-white tw-shadow-lg md:tw-h-14 md:tw-w-14 md:tw-rounded-xl'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'

@@ -17,7 +17,11 @@ const HeroSection = () => {
         {/* content */}
         <div className='tw-w-full md:tw-w-[60%] '>
           <div className='tw-flex tw-w-[100%] tw-flex-col tw-items-center tw-space-y-4 md:tw-items-start'>
-            <div className='tw-flex tw-flex-col tw-items-center tw-justify-center tw-space-y-0 tw-text-2xl tw-font-black md:tw-items-start md:tw-text-4xl'>
+            <div
+              data-aos='fade-up'
+              data-aos-duration='2000'
+              className='tw-flex tw-flex-col tw-items-center tw-justify-center tw-space-y-0 tw-text-2xl tw-font-black md:tw-items-start md:tw-text-4xl'
+            >
               <span className='tw-text-center md:tw-text-start'>
                 Revolutionary way to
               </span>{' '}
@@ -28,13 +32,21 @@ const HeroSection = () => {
               <span className='tw-text-purple-600'>measurements</span>
             </div>
             <Typography
+              data-aos='fade-up'
+              data-aos-duration='2000'
+              data-aos-delay='200'
               variant='body2'
               className='tw-w-[90%] tw-text-center tw-font-fam2 tw-text-xs tw-font-bold tw-text-gray-400 sm:tw-w-[70%] md:tw-text-left md:tw-text-base'
             >
               Get and save all your client&apos;s measurements safely and access
               them anytime, anywhere. No more lost data. No more stress.
             </Typography>
-            <div className='tw-py-3 md:tw-pt-6'>
+            <div
+              data-aos='fade-up'
+              data-aos-duration='2000'
+              data-aos-delay='400'
+              className='tw-py-3 md:tw-pt-6'
+            >
               <Button
                 variant='outlined'
                 color='success'
@@ -46,7 +58,12 @@ const HeroSection = () => {
           </div>
         </div>
         {/* hero image */}
-        <div className=''>
+        <div
+          data-aos='fade-up'
+          data-aos-duration='2000'
+          data-aos-delay='600'
+          className=''
+        >
           <div className='tw-relative tw-h-[18rem] tw-w-[20rem] tw-overflow-hidden tw-rounded-xl tw-shadow-lg md:tw-h-[25rem] md:tw-w-[25rem]'>
             <Image
               layout='fill'
