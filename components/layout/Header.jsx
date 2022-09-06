@@ -100,14 +100,14 @@ const Header = (props) => {
                       Home
                     </a>
                   </Link>
-                  <Link href='/clients' passHref>
+                  <Link href='/customers' passHref>
                     {/*  */}
                     <a
                       className={`tw-rounded-lg tw-border tw-border-x-0 tw-border-t-0  tw-py-1 tw-px-6 tw-font-fam6 tw-shadow-lg tw-transition-all tw-duration-300 tw-ease-in hover:tw-bg-gray-100 ${
-                        router.asPath == '/clients' ? 'tw-border-solid' : ''
+                        router.asPath == '/customers' ? 'tw-border-solid' : ''
                       }`}
                     >
-                      Client
+                      Customers
                     </a>
                   </Link>
                   <Link href='/login' passHref>

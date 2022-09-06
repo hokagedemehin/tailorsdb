@@ -48,12 +48,12 @@ const MobileNavContent = () => {
             </a>
           </Link>
         </div>
-        {/* clients */}
+        {/* customers */}
         <div className=''>
-          <Link href='/clients' passHref>
+          <Link href='/customers' passHref>
             <a
               className={`${
-                router.asPath == '/clients'
+                router.asPath == '/customers'
                   ? 'tw-bg-purple-500 tw-text-white hover:tw-bg-purple-600'
                   : 'tw-text-gray-500 hover:tw-text-purple-500'
               } tw-flex tw-items-center tw-space-x-4 tw-px-4 tw-py-2  tw-transition-all tw-duration-300 tw-ease-in  `}
@@ -62,7 +62,7 @@ const MobileNavContent = () => {
               <span
                 className={`tw-font-fam1 tw-text-lg tw-font-bold tw-tracking-wider`}
               >
-                Clients
+                Customers
               </span>
             </a>
           </Link>

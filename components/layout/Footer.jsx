@@ -24,9 +24,9 @@ const Footer = () => {
                   Home
                 </a>
               </Link>
-              <Link href='/clients' passHref>
+              <Link href='/customers' passHref>
                 <a className='tw-text-gray-500 tw-transition tw-duration-300 hover:-tw-translate-y-1 hover:tw-text-sky-500 active:tw-text-sky-600'>
-                  Clients
+                  Customers
                 </a>
               </Link>
               <Link href='#' passHref>
