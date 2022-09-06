@@ -1,12 +1,12 @@
 import { Typography } from '@mui/material';
 import React from 'react';
-import Layout from '../../components/layout/Layout';
+import LayoutComp from '../../components/layout/LayoutComp';
 
 const LoginPage = () => {
   return (
-    <Layout>
+    <LayoutComp>
       <Typography variant='h5'>Login Page</Typography>
-    </Layout>
+    </LayoutComp>
   );
 };
 

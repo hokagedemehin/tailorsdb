@@ -43,7 +43,7 @@ function ScrollTop() {
   );
 }
 
-const Layout = ({ children }) => {
+const LayoutComp = ({ children }) => {
   return (
     <div>
       <Head>
@@ -69,4 +69,4 @@ const Layout = ({ children }) => {
   );
 };
 
-export default Layout;
+export default LayoutComp;
