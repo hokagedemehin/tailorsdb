@@ -1,17 +1,15 @@
-// import Head from "next/head";
-import CallToActionComponent from "../components/home/actionCall/call.to.action.component";
-import ContentComponent from "../components/home/content/content.component";
-import HeroSection from "../components/home/hero/hero.section.component";
-import Layout from "../components/layout/layout";
+import CallToActionComponent from '../components/home/actionCall/CallToActionComp';
+import ContentComponent from '../components/home/content/ContentComp';
+import HeroSection from '../components/home/hero/HeroSection';
+import PointsComp from '../components/home/motivation/PointsComp';
+import Layout from '../components/layout/Layout';
 
 export default function Home() {
   return (
-    <Layout
-      name="home"
-      desc="The secure place for tailors to keep their clients measurements"
-    >
+    <Layout>
       <HeroSection />
       <ContentComponent />
+      <PointsComp />
       <CallToActionComponent />
     </Layout>
   );
