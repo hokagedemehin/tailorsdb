@@ -234,17 +234,17 @@ const LoginPage = () => {
 
 export default LoginPage;
 
-// export async function getServerSideProps(context) {
-//   // console.log('context', context.req.cookies['tailors-db']);
-//   if (context.req.cookies['tailors-db']) {
-//     return {
-//       redirect: {
-//         destination: '/',
-//         permanent: false,
-//       },
-//     };
-//   }
-//   return {
-//     props: {}, // will be passed to the page component as props
-//   };
-// }
+export async function getServerSideProps(context) {
+  // console.log('context', context.req.cookies['tailors-db']);
+  if (context.req.cookies['tailors-db']) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {}, // will be passed to the page component as props
+  };
+}
