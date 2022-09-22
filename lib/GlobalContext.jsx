@@ -1,67 +1,84 @@
+import axios from 'axios';
 import { createContext, useContext, useEffect, useState } from 'react';
-import { faker } from '@faker-js/faker';
+import { useCookies } from 'react-cookie';
+// import { useDidUpdate } from 'rooks';
+import useSWR from 'swr';
 
 export const GlobalContextData = createContext();
 
 export default function GlobalContext({ children }) {
-  const [loanData, setLoanData] = useState([]);
-  faker.setLocale('en_NG');
+  const [cookies] = useCookies(['tailors-db']);
+  const [userInfo, setUserInfo] = useState(null);
+  const [verifyInfo, setVerifyInfo] = useState(null);
+
+  console.log('cookies', cookies['tailors-db']);
+  console.log('userInfo', userInfo);
+
+  const profileFetcher = (url) =>
+    axios
+      .get(url, {
+        headers: {
+          Authorization: `Token ${cookies['tailors-db']}`,
+        },
+      })
+      .then((res) => res.data);
+
+  const verifiedProfile = (url) => axios.get(url).then((res) => res.data[0]);
+
+  const { data: userProfile } = useSWR(
+    cookies['tailors-db']
+      ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/dj-rest-auth/user/`
+      : null,
+    profileFetcher
+  );
+
+  const { data: verifyProfile } = useSWR(
+    cookies['tailors-db'] && userProfile
+      ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/users?email=${userProfile?.email}`
+      : null,
+    verifiedProfile
+  );
+
+  console.log('swr data :>> ', userProfile);
+  // console.log('swr error :>> ', error);
 
   useEffect(() => {
-    let newData = [];
-    for (let index = 0; index <= 50; index++) {
-      let interest = faker.datatype.float({
-        min: 0.1,
-        max: 0.3,
-        precision: 0.01,
-      });
-      let collected = faker.datatype.number({
-        min: 100000,
-        max: 1000000,
-        precision: 0.01,
-      });
-      let status = faker.helpers.arrayElement([
-        'Confirmed',
-        'Pending',
-        'Rejected',
-      ]);
-      let timeline;
-      if (status === 'Confirmed') {
-        timeline = faker.date.between('2023-01-01', '2024-01-01');
-      }
-      let gender = faker.helpers.arrayElement(['Female', 'Male']);
-      // let paid = (collected * 0.6).toFixed(2)
-      newData.push({
-        id: index,
-        fullName: faker.name.fullName(),
-        loanAmount: collected,
-        expectedAmount: parseFloat((collected * (1 + interest)).toFixed(2)),
-        // gender: faker.name.sex(),
-        gender: gender,
-        reason: faker.helpers.arrayElement([
-          'Rent',
-          'School Fees',
-          'Utilities',
-          'Groceries',
-          'Medicals',
-          'Business',
-          'Others',
-        ]),
-        timeline: timeline,
-        interest: interest,
-        // expectedAmount: parseFloat((collected * 0.6).toFixed(2)),
-        // amountLeft: parseFloat((collected * 0.4).toFixed(2)),
-        // nextDueAmount: parseFloat((collected * 0.1).toFixed(2)),
-        avatar: faker.image.avatar(),
-        status: status,
-      });
+    if (cookies['tailors-db']) {
+      const getUserData = async () => {
+        const { data } = await axios.get(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/dj-rest-auth/user/`,
+          {
+            headers: {
+              Authorization: `Token ${cookies['tailors-db']}`,
+            },
+          }
+        );
+
+        const info = await axios.get(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/users?email=${data?.email}`
+        );
+        // console.log(verifyInfo);
+        setUserInfo(data);
+        setVerifyInfo(info?.data[0]?.verified);
+        // console.log('data', data);
+      };
+      getUserData();
+    } else {
+      // console.log('there is no cookie');
+      setUserInfo(null);
     }
-    newData.sort((a, b) => b.id - a.id);
-    setLoanData(newData);
-  }, []);
+  }, [cookies]);
 
   return (
-    <GlobalContextData.Provider value={{ loanData, setLoanData }}>
+    <GlobalContextData.Provider
+      value={{
+        userProfile,
+        verifyProfile,
+        userInfo,
+        verifyInfo,
+        setVerifyInfo,
+      }}
+    >
       {children}
     </GlobalContextData.Provider>
   );

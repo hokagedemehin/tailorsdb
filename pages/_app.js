@@ -14,7 +14,7 @@ import { CssBaseline } from '@mui/material';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 // import UserProvider from "../services/context/userContext";
-
+import { SWRConfig } from 'swr';
 // const progress = new ProgressBar({
 //   size: 4,
 //   color: "#2563eb",
@@ -31,7 +31,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 function MyApp({ Component, pageProps }) {
   const [progress, setProgress] = useState(false);
 
-    const theme = createTheme({
+  const theme = createTheme({
     breakpoints: {
       values: {
         xs: 0,
@@ -46,14 +46,14 @@ function MyApp({ Component, pageProps }) {
     },
   });
 
-    useEffect(() => {
+  useEffect(() => {
     // gsap.to(boxRef.current, { rotation: '360' });
     AOS.init({
       easing: 'ease-out-back',
     });
   }, []);
 
-    Router.events.on('routeChangeStart', () => {
+  Router.events.on('routeChangeStart', () => {
     setProgress(true);
   });
 
@@ -62,21 +62,23 @@ function MyApp({ Component, pageProps }) {
   });
 
   return (
-     <>
+    <>
       <Head>
         <meta name='viewport' content='initial-scale=1, width=device-width' />
       </Head>
       {progress && <TopBarProgress />}
       <StyledEngineProvider injectFirst>
         <DefaultSeo {...SEO} />
-        <GlobalContext>
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <LocalizationProvider dateAdapter={AdapterMoment}>
-              <Component {...pageProps} />
-            </LocalizationProvider>
-          </ThemeProvider>
-        </GlobalContext>
+        <SWRConfig>
+          <GlobalContext>
+            <ThemeProvider theme={theme}>
+              <CssBaseline />
+              <LocalizationProvider dateAdapter={AdapterMoment}>
+                <Component {...pageProps} />
+              </LocalizationProvider>
+            </ThemeProvider>
+          </GlobalContext>
+        </SWRConfig>
       </StyledEngineProvider>
     </>
     // <UserProvider>

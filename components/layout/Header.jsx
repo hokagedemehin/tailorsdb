@@ -10,9 +10,11 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import IconButton from '@mui/material/IconButton';
-import { Avatar, Drawer } from '@mui/material';
-import { faker } from '@faker-js/faker';
+import { Avatar, Button, Drawer, Menu, Tooltip } from '@mui/material';
+// import { faker } from '@faker-js/faker';
 import MobileNavContent from './MobileNavContent';
+import { useCookies } from 'react-cookie';
+import { useContextData } from '../../lib/GlobalContext';
 
 function ElevationScroll(props) {
   const { children, window } = props;
@@ -30,6 +32,9 @@ function ElevationScroll(props) {
 
 const Header = (props) => {
   const router = useRouter();
+  const { userProfile } = useContextData();
+  // eslint-disable-next-line no-unused-vars
+  const [_cookies, _, removeCookie] = useCookies(['tailors-db']);
 
   const [headerColor, setHeaderColor] = useState(false);
 
@@ -47,8 +52,8 @@ const Header = (props) => {
   };
 
   const [avatarInfo] = useState({
-    name: faker.name.firstName(),
-    image: faker.image.avatar(),
+    name: 'ibk',
+    image: 'https://material-ui.com/static/images/avatar/1.jpg',
   });
 
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -58,6 +63,16 @@ const Header = (props) => {
 
   const handleMobileClose = () => {
     setMobileOpen(false);
+  };
+
+  const [anchorElUser, setAnchorElUser] = useState(null);
+
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
   };
 
   return (
@@ -91,6 +106,7 @@ const Header = (props) => {
                 </div>
 
                 <Box className='tw-hidden  md:tw-flex md:tw-space-x-4'>
+                  {/* home */}
                   <Link href='/' passHref>
                     <a
                       className={`tw-rounded-lg tw-border tw-border-x-0 tw-border-t-0  tw-py-1 tw-px-6 tw-font-fam6 tw-shadow-lg tw-transition-all tw-duration-300 tw-ease-in hover:tw-bg-gray-100 ${
@@ -100,25 +116,84 @@ const Header = (props) => {
                       Home
                     </a>
                   </Link>
-                  <Link href='/customers' passHref>
-                    {/*  */}
+                  {/* clients */}
+                  <Link href='/clients' passHref>
                     <a
                       className={`tw-rounded-lg tw-border tw-border-x-0 tw-border-t-0  tw-py-1 tw-px-6 tw-font-fam6 tw-shadow-lg tw-transition-all tw-duration-300 tw-ease-in hover:tw-bg-gray-100 ${
-                        router.asPath == '/customers' ? 'tw-border-solid' : ''
+                        router.asPath == '/clients' ? 'tw-border-solid' : ''
                       }`}
                     >
-                      Customers
+                      Clients
                     </a>
                   </Link>
-                  <Link href='/login' passHref>
-                    <a
-                      className={`tw-rounded-lg tw-border tw-border-x-0  tw-border-t-0 tw-py-1 tw-px-6 tw-font-fam6 tw-shadow-lg tw-transition-all tw-duration-300 tw-ease-in hover:tw-bg-gray-100 ${
-                        router.asPath == '/login' ? 'tw-border-solid' : ''
-                      }`}
-                    >
-                      Login
-                    </a>
-                  </Link>
+
+                  {/* login | avatar |logout */}
+                  {userProfile ? (
+                    <Box sx={{ flexGrow: 0 }}>
+                      <Tooltip title='Open user'>
+                        <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                          <Avatar
+                            src={avatarInfo?.image}
+                            alt={avatarInfo?.name}
+                            className='tw-h-[2rem] tw-w-[2rem]'
+                          />
+                        </IconButton>
+                      </Tooltip>
+                      <Menu
+                        sx={{ mt: '45px' }}
+                        id='menu-appbar'
+                        anchorEl={anchorElUser}
+                        anchorOrigin={{
+                          vertical: 'top',
+                          horizontal: 'right',
+                        }}
+                        keepMounted
+                        transformOrigin={{
+                          vertical: 'top',
+                          horizontal: 'right',
+                        }}
+                        open={Boolean(anchorElUser)}
+                        onClose={handleCloseUserMenu}
+                      >
+                        <div className='tw-space-y-3 tw-px-4 tw-py-2'>
+                          <div className='tw-flex tw-justify-center'>
+                            <Link href='/profile' passHref>
+                              <a
+                                className={`tw-rounded-lg tw-border tw-border-x-0  tw-border-t-0 tw-py-1 tw-px-6 tw-font-fam6 tw-shadow-lg tw-transition-all tw-duration-300 tw-ease-in hover:tw-bg-gray-100 ${
+                                  router.asPath == '/profile'
+                                    ? 'tw-border-solid'
+                                    : ''
+                                }`}
+                              >
+                                Profile
+                              </a>
+                            </Link>
+                          </div>
+                          <div className='tw-flex tw-justify-center'>
+                            <Button
+                              className={`tw-rounded-lg tw-border tw-border-x-0  tw-border-t-0 tw-py-1 tw-px-6 tw-font-fam6 tw-capitalize tw-text-gray-600 tw-shadow-lg tw-transition-all tw-duration-300 tw-ease-in hover:tw-bg-gray-100`}
+                              onClick={() => {
+                                removeCookie('tailors-db');
+                                router.push('/');
+                              }}
+                            >
+                              Logout
+                            </Button>
+                          </div>
+                        </div>
+                      </Menu>
+                    </Box>
+                  ) : (
+                    <Link href='/login' passHref>
+                      <a
+                        className={`tw-rounded-lg tw-border tw-border-x-0  tw-border-t-0 tw-py-1 tw-px-6 tw-font-fam6 tw-shadow-lg tw-transition-all tw-duration-300 tw-ease-in hover:tw-bg-gray-100 ${
+                          router.asPath == '/login' ? 'tw-border-solid' : ''
+                        }`}
+                      >
+                        Login
+                      </a>
+                    </Link>
+                  )}
                 </Box>
               </div>
 
