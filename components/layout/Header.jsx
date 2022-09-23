@@ -33,6 +33,7 @@ function ElevationScroll(props) {
 const Header = (props) => {
   const router = useRouter();
   const { userProfile } = useContextData();
+  console.log('userProfile :>> ', userProfile);
   // eslint-disable-next-line no-unused-vars
   const [_cookies, _, removeCookie] = useCookies(['tailors-db']);
 
@@ -221,13 +222,72 @@ const Header = (props) => {
                   </div>
                 </div>
                 <div className='tw-flex tw-w-full tw-justify-end'>
-                  <IconButton className=''>
-                    <Avatar
-                      alt={avatarInfo?.name}
-                      src={avatarInfo?.image}
-                      className='tw-h-[2rem] tw-w-[2rem]'
-                    />
-                  </IconButton>
+                  {userProfile ? (
+                    <Box sx={{ flexGrow: 0 }}>
+                      <Tooltip title='Open user'>
+                        <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                          <Avatar
+                            src={avatarInfo?.image}
+                            alt={avatarInfo?.name}
+                            className='tw-h-[2rem] tw-w-[2rem]'
+                          />
+                        </IconButton>
+                      </Tooltip>
+                      <Menu
+                        sx={{ mt: '45px' }}
+                        id='menu-appbar'
+                        anchorEl={anchorElUser}
+                        anchorOrigin={{
+                          vertical: 'top',
+                          horizontal: 'right',
+                        }}
+                        keepMounted
+                        transformOrigin={{
+                          vertical: 'top',
+                          horizontal: 'right',
+                        }}
+                        open={Boolean(anchorElUser)}
+                        onClose={handleCloseUserMenu}
+                      >
+                        <div className='tw-space-y-3 tw-px-4 tw-py-2'>
+                          <div className='tw-flex tw-justify-center'>
+                            <Link href='/profile' passHref>
+                              <a
+                                className={`tw-rounded-lg tw-border tw-border-x-0  tw-border-t-0 tw-py-1 tw-px-6 tw-font-fam6 tw-shadow-lg tw-transition-all tw-duration-300 tw-ease-in hover:tw-bg-gray-100 ${
+                                  router.asPath == '/profile'
+                                    ? 'tw-border-solid'
+                                    : ''
+                                }`}
+                              >
+                                Profile
+                              </a>
+                            </Link>
+                          </div>
+                          <div className='tw-flex tw-justify-center'>
+                            <Button
+                              className={`tw-rounded-lg tw-border tw-border-x-0  tw-border-t-0 tw-py-1 tw-px-6 tw-font-fam6 tw-capitalize tw-text-gray-600 tw-shadow-lg tw-transition-all tw-duration-300 tw-ease-in hover:tw-bg-gray-100`}
+                              onClick={() => {
+                                removeCookie('tailors-db');
+                                router.push('/');
+                              }}
+                            >
+                              Logout
+                            </Button>
+                          </div>
+                        </div>
+                      </Menu>
+                    </Box>
+                  ) : (
+                    <Link href='/login' passHref>
+                      <a
+                        className={`tw-rounded-lg tw-border tw-border-x-0  tw-border-t-0 tw-py-1 tw-px-6 tw-font-fam6 tw-shadow-lg tw-transition-all tw-duration-300 tw-ease-in hover:tw-bg-gray-100 ${
+                          router.asPath == '/login' ? 'tw-border-solid' : ''
+                        }`}
+                      >
+                        Login
+                      </a>
+                    </Link>
+                  )}
                 </div>
                 <Drawer
                   anchor='left'

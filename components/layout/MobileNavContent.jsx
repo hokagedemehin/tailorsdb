@@ -5,10 +5,13 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import HomeIcon from '@mui/icons-material/Home';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
-import InputIcon from '@mui/icons-material/Input';
+// import InputIcon from '@mui/icons-material/Input';
+// import { useContextData } from '../../lib/GlobalContext';
 
 const MobileNavContent = () => {
   const router = useRouter();
+  // const { userProfile } = useContextData();
+
   return (
     <div className='tw-w-[15rem] '>
       {/* logo & name */}
@@ -63,25 +66,6 @@ const MobileNavContent = () => {
                 className={`tw-font-fam1 tw-text-lg tw-font-bold tw-tracking-wider`}
               >
                 Clients
-              </span>
-            </a>
-          </Link>
-        </div>
-        {/* login */}
-        <div className=''>
-          <Link href='/login' passHref>
-            <a
-              className={`${
-                router.asPath == '/login'
-                  ? 'tw-bg-purple-500 tw-text-white hover:tw-bg-purple-600'
-                  : 'tw-text-gray-500 hover:tw-text-purple-500'
-              } tw-flex tw-items-center tw-space-x-4 tw-px-4 tw-py-2  tw-transition-all tw-duration-300 tw-ease-in  `}
-            >
-              <InputIcon />
-              <span
-                className={`tw-font-fam1 tw-text-lg tw-font-bold tw-tracking-wider`}
-              >
-                Login
               </span>
             </a>
           </Link>

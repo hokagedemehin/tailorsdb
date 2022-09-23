@@ -10,7 +10,7 @@ import {
 import axios from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import AuthenticationLayoutComp from '../../components/layout/AuthLayoutComp';
 import { useCookies } from 'react-cookie';
@@ -18,7 +18,17 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LoadingButton from '@mui/lab/LoadingButton';
 
-const LoginPage = () => {
+const LoginPage = ({ tokenCheck }) => {
+  console.log('tokenCheck :>> ', tokenCheck);
+
+  useEffect(() => {
+    if (tokenCheck) {
+      router.push('/');
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
   // eslint-disable-next-line no-unused-vars
@@ -236,15 +246,18 @@ export default LoginPage;
 
 export async function getServerSideProps(context) {
   // console.log('context', context.req.cookies['tailors-db']);
-  if (context.req.cookies['tailors-db']) {
-    return {
-      redirect: {
-        destination: '/',
-        permanent: false,
-      },
-    };
-  }
+  const token = context.req.cookies['tailors-db'];
+  // if (context.req.cookies['tailors-db']) {
+  //   return {
+  //     redirect: {
+  //       destination: '/',
+  //       permanent: false,
+  //     },
+  //   };
+  // }
   return {
-    props: {}, // will be passed to the page component as props
+    props: {
+      tokenCheck: token ?? null,
+    }, // will be passed to the page component as props
   };
 }
