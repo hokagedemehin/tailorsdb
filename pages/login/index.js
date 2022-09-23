@@ -17,20 +17,20 @@ import { useCookies } from 'react-cookie';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LoadingButton from '@mui/lab/LoadingButton';
+import { useContextData } from '../../lib/GlobalContext';
 
-const LoginPage = ({ tokenCheck }) => {
-  console.log('tokenCheck :>> ', tokenCheck);
-
+const LoginPage = () => {
+  const { userProfile } = useContextData();
+  const router = useRouter();
   useEffect(() => {
-    if (tokenCheck) {
+    if (userProfile) {
       router.push('/');
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [userProfile]);
 
   const [showPassword, setShowPassword] = useState(false);
-  const router = useRouter();
   // eslint-disable-next-line no-unused-vars
   const [_, setCookie] = useCookies(['tailors-db']);
   const [formValue, setFormValue] = useState({
@@ -244,20 +244,20 @@ const LoginPage = ({ tokenCheck }) => {
 
 export default LoginPage;
 
-export async function getServerSideProps(context) {
-  // console.log('context', context.req.cookies['tailors-db']);
-  const token = context.req.cookies['tailors-db'];
-  // if (context.req.cookies['tailors-db']) {
-  //   return {
-  //     redirect: {
-  //       destination: '/',
-  //       permanent: false,
-  //     },
-  //   };
-  // }
-  return {
-    props: {
-      tokenCheck: token ?? null,
-    }, // will be passed to the page component as props
-  };
-}
+// export async function getServerSideProps(context) {
+//   // console.log('context', context.req.cookies['tailors-db']);
+//   const token = context.req.cookies['tailors-db'];
+//   // if (context.req.cookies['tailors-db']) {
+//   //   return {
+//   //     redirect: {
+//   //       destination: '/',
+//   //       permanent: false,
+//   //     },
+//   //   };
+//   // }
+//   return {
+//     props: {
+//       tokenCheck: token ?? null,
+//     }, // will be passed to the page component as props
+//   };
+// }
