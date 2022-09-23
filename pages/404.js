@@ -1,55 +1,48 @@
-import React from "react";
-// import { useRouter } from "next/router";
-
+import React from 'react';
+import { useRouter } from 'next/router';
+import { Button, Typography } from '@mui/material';
+import Image from 'next/image';
+import Image404 from '../public/404/Image404.svg';
 const Custom404 = () => {
-  // const router = useRouter();
-  // const handleClick = (e) => {
-  //   e.preventDefault();
-  //   router.push("/");
-  //   // console.log(router.push("/services"));
-  // };
+  const router = useRouter();
+  const handleClick = () => {
+    router.push('/');
+  };
   return (
     <div>
-      <div className="bg-white py-6 sm:py-8 lg:py-12">
-        <div className="max-w-screen-lg px-4 md:px-8 mx-auto">
-          <div className="grid sm:grid-cols-2 gap-8">
+      <div className='tw-bg-white'>
+        <div className='tw-mx-auto tw-flex tw-min-h-screen tw-max-w-screen-lg tw-items-center tw-justify-center tw-px-4 md:tw-px-8'>
+          <div className='tw-grid tw-gap-8 sm:tw-grid-cols-2'>
             {/* <!-- content - start --> */}
-            <div className="flex flex-col justify-center items-center sm:items-start md:py-24 lg:py-32">
-              <p className="text-indigo-500 text-sm md:text-base font-semibold uppercase mb-4">
-                Error 404
-              </p>
-              <h1 className="text-gray-800 text-2xl md:text-3xl font-bold text-center sm:text-left mb-2">
+            <div className='tw-flex tw-flex-col tw-items-center tw-justify-center sm:tw-items-start md:tw-py-[4rem] lg:tw-py-[5rem]'>
+              <Typography className='tw-mb-4 tw-text-3xl tw-font-semibold tw-uppercase tw-text-red-500 md:tw-text-4xl'>
+                Hold Up!!!
+              </Typography>
+              <Typography className='tw-mb-2 tw-text-center tw-text-2xl tw-font-bold tw-text-gray-800 sm:tw-text-left md:tw-text-3xl'>
                 Page not found
-              </h1>
+              </Typography>
 
-              <p className="text-gray-500 md:text-lg text-center sm:text-left mb-8">
-                The page you’re looking for doesn’t exist.
-              </p>
+              <Typography className='tw-mb-8 tw-text-center tw-text-gray-500 sm:tw-text-left md:tw-text-lg'>
+                The page you&apos;re looking for doesn&apos;t exist.
+              </Typography>
 
-              {/* <a
-                href="/"
-                className="inline-block bg-gray-200 hover:bg-gray-300 focus-visible:ring ring-indigo-300 text-gray-500 active:text-gray-700 text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3"
+              <Button
+                onClick={() => handleClick()}
+                className='tw-transform tw-rounded tw-bg-emerald-500 tw-py-2 tw-px-4 tw-text-sm tw-font-medium tw-capitalize tw-text-white tw-shadow-sm tw-transition tw-duration-300 tw-ease-in-out hover:tw-scale-105 hover:tw-bg-emerald-600'
               >
-                Go home
-              </a> */}
-              <a
-                href="/"
-                className="relative px-6 py-3 font-bold text-black group "
-              >
-                <span className="absolute inset-0 w-full h-full transition duration-300 ease-out transform -translate-x-2 -translate-y-2 bg-blue-300 group-hover:translate-x-0 group-hover:translate-y-0 rounded-md"></span>
-                <span className="absolute inset-0 w-full h-full border-4 border-black rounded-md"></span>
-                <span className="relative">Go Home</span>
-              </a>
+                Go Back Home
+              </Button>
             </div>
             {/* <!-- content - end --> */}
 
             {/* <!-- image - start --> */}
-            <div className="h-80 md:h-auto  overflow-hidden  relative">
-              <img
-                src="/404/404.svg"
-                loading="lazy"
-                alt="404 Page"
-                className="w-full h-full object-contain object-center absolute inset-0"
+            <div className='tw-relative tw-h-80  tw-overflow-hidden  md:tw-h-auto'>
+              <Image
+                src={Image404}
+                layout='fill'
+                objectFit='contain'
+                alt='404 Page'
+                // className='w-full h-full object-contain object-center absolute inset-0'
               />
             </div>
             {/* <!-- image - end --> */}

@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://tailorsdb.com
+
+# Sitemaps
+Sitemap: https://tailorsdb.com/sitemap.xml
